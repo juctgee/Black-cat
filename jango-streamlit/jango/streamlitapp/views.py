@@ -32,4 +32,12 @@ def upload_data(request):
     return JsonResponse({"error": "รองรับเฉพาะ POST เท่านั้น"}, status=405)
 
 def streamlit(request):
-    return render(request, "streamlitapp/streamlit.html") 
+    # ดึงข้อมูลที่ถูกอัปโหลดจากฐานข้อมูล
+    uploaded_files = UploadedFile.objects.all()
+    user_data = UserData.objects.all()
+
+    # ส่งข้อมูลไปยัง template
+    return render(request, "streamlitapp/streamlit.html", {
+        'uploaded_files': uploaded_files,
+        'user_data': user_data
+    })
