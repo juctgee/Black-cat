@@ -15,5 +15,8 @@ admin.site.register(models.Event)
 
 admin.site.register(models.Review)
 
-admin.site.register(MenuItem)
+class MenuItemAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'rating', 'image')
+    fields = ('name', 'description', 'price', 'rating', 'image')
 
+admin.site.register(MenuItem, MenuItemAdmin)
