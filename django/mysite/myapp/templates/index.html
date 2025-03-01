@@ -104,5 +104,31 @@
       </div>
     </div>
   </div>
+
+  <!-- เมนูขายดี -->
+  <div class="mt-5">
+    <h2 class="mb-4 text-center">เมนูขายดี</h2>
+    <div class="row">
+      {% for menu in best_selling_menus %}
+      <div class="col-md-4 mb-4">
+        <div class="card modern-card">
+          <img src="{{ menu.image.url }}" class="card-img-top" alt="{{ menu.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ menu.name }}</h5>
+            <p class="card-text">ราคา: {{ menu.price }}</p>
+            <!-- แสดงจำนวนรีวิว -->
+            <p class="card-text">รีวิว: {{ menu.num_reviews }}</p>
+            <a href="#" class="btn btn-primary">สั่งซื้อ</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12">
+        <p class="text-center">ไม่มีเมนูขายดีในขณะนี้</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
 </div>
 {% endblock %}

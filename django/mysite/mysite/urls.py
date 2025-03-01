@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , include('myapp.urls')),
     path('streamlit/', include('streamlitapp.urls')),
+    path('api/', include('api.urls')),
 ]

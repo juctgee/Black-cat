@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'myapp',
     'widget_tweaks', 
     'streamlitapp',
+    'api',
 ]
 
 LOGIN_REDIRECT_URL = '/members/'
