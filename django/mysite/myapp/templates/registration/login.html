@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<!-- Custom CSS สำหรับสไตล์ขาว–ดำและแบบสี่เหลี่ยม -->
+<style>
+  /* ปรับสไตล์ให้กับ input fields (form-control) */
+  .form-control {
+    border-radius: 0 !important;
+    border: 1px solid #000 !important;
+    background-color: #fff !important;
+    color: #000;
+  }
+  /* ปุ่มให้เป็นแบบสี่เหลี่ยม */
+  .btn-square {
+    border-radius: 0 !important;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <!-- Card แบบสี่เหลี่ยม -->
+      <div class="card border-dark shadow" style="border-radius: 0;">
+        <div class="card-body bg-white">
+          <h2 class="text-center mb-4 text-dark">เข้าสู่ระบบ</h2>
+          <form method="post">
+            {% csrf_token %}
+            <!-- Field: Username -->
+            <div class="mb-3">
+              <label for="{{ form.username.id_for_label }}" class="form-label">ชื่อผู้ใช้</label>
+              {{ form.username|add_class:"form-control" }}
+              {% for error in form.username.errors %}
+                <div class="text-danger small">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <!-- Field: Password -->
+            <div class="mb-3">
+              <label for="{{ form.password.id_for_label }}" class="form-label">รหัสผ่าน</label>
+              {{ form.password|add_class:"form-control" }}
+              {% for error in form.password.errors %}
+                <div class="text-danger small">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-dark w-100 btn-square">Login</button>
+          </form>
+        </div>
+        <p class="text-center mb-3">
+          ยังไม่มีสมาชิก? <a href="{% url 'sign_up' %}">สมัครสมาชิก</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
