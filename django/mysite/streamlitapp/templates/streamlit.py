@@ -18,14 +18,18 @@ st.markdown(
     body {
         background-color: #F5F5F5;
     }
-    /* กล่อง/การ์ดสำหรับ KPI แต่ละตัว */
+    /* กล่อง/การ์ดสำหรับ KPI แต่ละตัว - กำหนดความสูงคงที่ */
     .kpi-card {
         background-color: #FFFFFF;
         border-radius: 10px;
         padding: 20px;
-        margin: 10px 0px; /* เว้นระยะด้านบน-ล่างเล็กน้อย */
+        margin: 10px 0px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
+        height: 150px;  /* กำหนดความสูงของการ์ด */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .kpi-title {
         font-size: 1.2rem;
@@ -58,7 +62,7 @@ st.markdown(
 # กำหนด Base URL ของ Django API
 BASE_URL = "http://127.0.0.1:8000/api/"
 
-# ฟังก์ชันสำหรับเรียก API และดึงข้อมูล (return เป็น DataFrame หรือ list/dict ก็ได้)
+# ฟังก์ชันสำหรับเรียก API และดึงข้อมูล
 def fetch_data(endpoint):
     try:
         url = BASE_URL + endpoint
@@ -74,7 +78,6 @@ def fetch_data(endpoint):
 st.sidebar.title("Navigation")
 page = st.sidebar.selectbox("เลือกหน้า", ["Dashboard", "Menu", "Member"])
 
-# ส่วนหัวของหน้า Dashboard (สำหรับ Dashboard และอื่น ๆ ที่ต้องการแสดง KPI)
 if page == "Dashboard":
     st.title("KANGMOR CAFE DASHBOARD")
 
@@ -100,7 +103,8 @@ if page == "Dashboard":
     with col2:
         new_members_data = fetch_data("new_members/")
         if new_members_data:
-            new_members_value = new_members_data.get("new_members", 0)
+            # ใช้ key "new_members_past_7_days" ตาม API response
+            new_members_value = new_members_data.get("new_members_past_7_days", 0)
             st.markdown(
                 f"""
                 <div class="kpi-card">
@@ -132,7 +136,13 @@ if page == "Dashboard":
     monthly_sales_data = fetch_data("monthly_sales/")
     if monthly_sales_data:
         df_monthly_sales = pd.DataFrame(monthly_sales_data)
-        fig = px.bar(df_monthly_sales, x="month", y="sales", title="Monthly Sales")
+        # สมมติว่า key "month" เป็น string เช่น "March 2025"
+        months = df_monthly_sales["month"].unique().tolist()
+        selected_month = st.selectbox("เลือกเดือน", months)
+        filtered_df = df_monthly_sales[df_monthly_sales["month"] == selected_month]
+        # กำหนดขนาดกราฟเล็กลงโดยใช้ layout (ตัวอย่าง: height 400px)
+        fig = px.bar(filtered_df, x="month", y="sales", title=f"Monthly Sales: {selected_month}",
+                     height=400)
         st.plotly_chart(fig, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -165,4 +175,3 @@ elif page == "Member":
     else:
         st.info("ไม่พบข้อมูลสมาชิก")
     st.markdown('</div>', unsafe_allow_html=True)
-
