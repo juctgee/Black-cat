@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import decimal
+from django.utils import timezone
+
 
 # Model สำหรับสมาชิก
 class Member(models.Model):
@@ -106,7 +108,6 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        # เนื่องจาก price ใน Menu ถูกเก็บเป็น CharField เราจึงต้องแปลงเป็น Decimal ก่อนคำนวณ
         try:
             price = decimal.Decimal(self.menu.price)
         except Exception:
@@ -115,4 +116,6 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Order #{self.id} by {self.member.username}"
+        # แปลงเวลาเป็นเวลาท้องถิ่น (Asia/Bangkok ตาม settings)
+        local_time = timezone.localtime(self.order_date)
+        return f"Order #{self.id} by {self.member.username} on {local_time.strftime('%d %b %Y, %I:%M %p')}"

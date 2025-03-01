@@ -4,6 +4,8 @@ from django.db.models import Sum
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models.functions import TruncMonth
+from myapp.models import Order
+from django.db.models import Count
 
 
 from myapp.models import Menu, Order, Member, Event
@@ -63,3 +65,34 @@ def upcoming_events(request):
     now = timezone.now()
     events = list(Event.objects.filter(event_date__gte=now).values())
     return Response(events)
+
+@api_view(['GET'])
+def order_list(request):
+    orders = Order.objects.all().values(
+        'id', 'member__username', 'menu__name', 'quantity', 'total_price', 'order_date'
+    )
+    return Response(list(orders))
+
+@api_view(['GET'])
+def order_by_date(request):
+    if 'start_date' not in request.query_params or 'end_date' not in request.query_params:
+        return Response({"error": "Missing start_date and end_date parameters"}, status=400)
+    
+    start_date = request.query_params['start_date']
+    end_date = request.query_params['end_date']
+
+    orders = Order.objects.filter(
+        order_date__date__gte=start_date,
+        order_date__date__lte=end_date
+    ).values(
+        'id', 'member__username', 'menu__name', 'quantity', 'total_price', 'order_date'
+    )
+    return Response(list(orders))
+
+@api_view(['GET'])
+def best_selling_menus(request):
+    # คำนวณจำนวนรีวิวสำหรับแต่ละเมนูและจัดเรียงจากมากไปน้อย
+    best_selling = Menu.objects.annotate(num_reviews=Count('reviews')).order_by('-num_reviews')
+    # สร้าง list ของ dictionary โดยเลือก field ที่ต้องการแสดง
+    data = list(best_selling.values('id', 'name', 'price', 'category', 'image', 'num_reviews'))
+    return Response(data)
