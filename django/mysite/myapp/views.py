@@ -39,4 +39,5 @@ from .models import MenuItem
 
 def menu_list(request):
     menus = MenuItem.objects.all()
+    print("Menus:", menus)
     return render(request, "menu.html", {"menus": menus})
