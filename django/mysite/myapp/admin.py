@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from .models import MenuItem
 
 # Register your models here.
 
@@ -13,4 +14,6 @@ admin.site.register(models.Promotion)
 admin.site.register(models.Event)
 
 admin.site.register(models.Review)
+
+admin.site.register(MenuItem)
 

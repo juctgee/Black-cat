@@ -33,4 +33,10 @@ def register(req):
 
 def logout(req):
     return redirect('login')
-    
+
+from django.shortcuts import render
+from .models import MenuItem
+
+def menu_list(request):
+    menus = MenuItem.objects.all()
+    return render(request, "menu.html", {"menus": menus})

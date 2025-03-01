@@ -4,7 +4,7 @@ from django.urls import include
 
 from .views import SignUpView
 from django.contrib.auth.views import LogoutView
-
+from .views import menu_list
 
 urlpatterns = [
    path('accounts/', include('django.contrib.auth.urls')),
@@ -13,4 +13,5 @@ urlpatterns = [
    path('', views.home, name='home'),
    path('menu/', views.menu, name='menu'),
    path('members/', views.members, name='members'),
+   path("", menu_list, name="menu_list"),
 ]
