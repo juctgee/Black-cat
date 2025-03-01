@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load custom_filters %}
+
 {% block content %}
 <div class="container">
   <h2 class="mb-4 text-center">เมนูแนะนำ</h2>
@@ -14,8 +16,8 @@
             <p class="fw-bold">ราคา: ฿{{ menu.price }}</p>
             <!-- Rating Stars -->
             <div class="star-rating mb-2">
-              {% for i in "12345"|make_list %}
-                {% if forloop.counter <= menu.rating %}
+              {% for i in 5|to %}
+                {% if i <= menu.rating %}
                   <i class="bi bi-star-fill text-warning"></i>
                 {% else %}
                   <i class="bi bi-star text-warning"></i>
@@ -23,8 +25,6 @@
               {% endfor %}
             </div>
             <a href="#" class="btn btn-primary">สั่งซื้อ</a>
-            <p>รายการเมนู: {{ menus }}</p>
-
           </div>
         </div>
       </div>
