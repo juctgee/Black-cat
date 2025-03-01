@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<style>
+  /* ทำให้ form-control ไม่มี border-radius, มีพื้นหลังสีขาว และมีขอบสีดำ */
+  .form-control {
+    border-radius: 0 !important;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
+</style>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <!-- Card แบบไม่มี border-radius เพื่อให้เป็นสี่เหลี่ยม -->
+      <div class="card border-dark shadow" style="border-radius: 0;">
+        <div class="card-body bg-white">
+          <h2 class="text-center mb-4 text-dark">Sign Up</h2>
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+              {{ form.username|add_class:"form-control" }}
+              {% for error in form.username.errors %}
+                <div class="text-danger small">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <div class="mb-3">
+              <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
+              {{ form.password1|add_class:"form-control" }}
+              {% for error in form.password1.errors %}
+                <div class="text-danger small">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <div class="mb-3">
+              <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+              {{ form.password2|add_class:"form-control" }}
+              {% for error in form.password2.errors %}
+                <div class="text-danger small">{{ error }}</div>
+              {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-dark w-100" style="border-radius: 0;">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

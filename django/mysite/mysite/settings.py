@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'widget_tweaks', 
+    'streamlitapp',
 ]
+
+LOGIN_REDIRECT_URL = '/members/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
