@@ -32,14 +32,15 @@ def total_sales(request):
 def new_members(request):
     """
     ดูจำนวนสมาชิกที่สมัครเข้ามาใหม่ในช่วง 7 วันล่าสุด
-    (สมมติว่า Member มีฟิลด์ created_at)
+    โดยใช้เวลาปัจจุบัน (local time) แล้วนับถอยหลังไป 7 วัน
     """
-    now = timezone.now()
+    now = timezone.localtime()  # ใช้ local time แทน timezone.now()
     last_7_days = now - timedelta(days=7)
     count_new_members = Member.objects.filter(created_at__gte=last_7_days).count()
     return Response({
         "new_members_past_7_days": count_new_members
     })
+
 @api_view(['GET'])
 def monthly_sales(request):
     # คำนวณยอดขายรายเดือน

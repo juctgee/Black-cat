@@ -1,134 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- เพิ่มสไตล์เฉพาะสำหรับ card แบบโมเดิร์น -->
-<style>
-  .modern-card {
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-  }
-  .modern-card:hover {
-    transform: translateY(-5px);
-  }
-</style>
-
 <div class="container">
-  <!-- Carousel -->
-  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://img.freepik.com/free-vector/gradient-sale-background_23-2148934477.jpg?semt=ais_hybrid" 
-             class="d-block w-100" style="max-height:300px; object-fit: cover;" alt="Slide 1">
-      </div>
-      <div class="carousel-item">
-        <img src="https://img.freepik.com/free-vector/gradient-sale-background_23-2148934477.jpg?semt=ais_hybrid" 
-             class="d-block w-100" style="max-height:300px; object-fit: cover;" alt="Slide 2">
-      </div>
-      <div class="carousel-item">
-        <img src="https://img.freepik.com/free-vector/gradient-sale-background_23-2148934477.jpg?semt=ais_hybrid" 
-             class="d-block w-100" style="max-height:300px; object-fit: cover;" alt="Slide 3">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  
   <!-- เมนูแนะนำ -->
   <div class="mt-5">
     <h2 class="mb-4 text-center">เมนูแนะนำ</h2>
     <div class="row">
-      <!-- เมนู 1 -->
+      {% for menu in recommended_menus %}
       <div class="col-md-4 mb-4">
         <div class="card modern-card">
-          <img src="https://via.placeholder.com/400x300.png?text=เมนู+1" class="card-img-top" alt="เมนู 1">
-          <div class="card-body">
-            <h5 class="card-title">เมนู 1</h5>
-            <p class="card-text">รายละเอียดของเมนู 1 ที่อร่อยและคัดสรรมาเพื่อคุณ</p>
-            <!-- Rating Stars -->
-            <div class="star-rating mb-2">
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star text-warning"></i>
-            </div>
-            <a href="#" class="btn btn-primary">สั่งซื้อ</a>
-          </div>
-        </div>
-      </div>
-      <!-- เมนู 2 -->
-      <div class="col-md-4 mb-4">
-        <div class="card modern-card">
-          <img src="https://via.placeholder.com/400x300.png?text=เมนู+2" class="card-img-top" alt="เมนู 2">
-          <div class="card-body">
-            <h5 class="card-title">เมนู 2</h5>
-            <p class="card-text">รายละเอียดของเมนู 2 ที่มีรสชาติแสนอร่อย</p>
-            <!-- Rating Stars -->
-            <div class="star-rating mb-2">
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star text-warning"></i>
-            </div>
-            <a href="#" class="btn btn-primary">สั่งซื้อ</a>
-          </div>
-        </div>
-      </div>
-      <!-- เมนู 3 -->
-      <div class="col-md-4 mb-4">
-        <div class="card modern-card">
-          <img src="https://via.placeholder.com/400x300.png?text=เมนู+3" class="card-img-top" alt="เมนู 3">
-          <div class="card-body">
-            <h5 class="card-title">เมนู 3</h5>
-            <p class="card-text">รายละเอียดของเมนู 3 ที่คัดสรรมาสำหรับคนรักสุขภาพ</p>
-            <!-- Rating Stars -->
-            <div class="star-rating mb-2">
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star-fill text-warning"></i>
-              <i class="bi bi-star text-warning"></i>
-            </div>
-            <a href="#" class="btn btn-primary">สั่งซื้อ</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- เมนูขายดี -->
-  <div class="mt-5">
-    <h2 class="mb-4 text-center">เมนูขายดี</h2>
-    <div class="row">
-      {% for menu in best_selling_menus %}
-      <div class="col-md-4 mb-4">
-        <div class="card modern-card">
-          <img src="{{ menu.image.url }}" class="card-img-top" alt="{{ menu.name }}">
+          {% if menu.image %}
+            <img src="{{ menu.image.url }}" class="card-img-top" alt="{{ menu.name }}">
+          {% else %}
+            <img src="https://via.placeholder.com/400x300.png?text=ไม่มีรูป" class="card-img-top" alt="ไม่มีรูป">
+          {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ menu.name }}</h5>
             <p class="card-text">ราคา: {{ menu.price }}</p>
-            <!-- แสดงจำนวนรีวิว -->
-            <p class="card-text">รีวิว: {{ menu.num_reviews }}</p>
+            <!-- แสดงรีวิวเป็นดาว -->
+            <div class="star-rating mb-2">
+              {% with avg=menu.avg_rating|default:0 %}
+                {% for i in "12345" %}
+                  {% if forloop.counter <= avg|floatformat:0 %}
+                    <i class="bi bi-star-fill text-warning"></i>
+                  {% else %}
+                    <i class="bi bi-star text-warning"></i>
+                  {% endif %}
+                {% endfor %}
+                {% if avg > 0 %}
+                  <span>({{ avg|floatformat:1 }})</span>
+                {% else %}
+                  <span>(ไม่มีรีวิว)</span>
+                {% endif %}
+              {% endwith %}
+            </div>
             <a href="#" class="btn btn-primary">สั่งซื้อ</a>
           </div>
         </div>
       </div>
       {% empty %}
       <div class="col-12">
-        <p class="text-center">ไม่มีเมนูขายดีในขณะนี้</p>
+        <p class="text-center">ไม่มีเมนูแนะนำในขณะนี้</p>
       </div>
       {% endfor %}
     </div>
   </div>
-
 </div>
 {% endblock %}

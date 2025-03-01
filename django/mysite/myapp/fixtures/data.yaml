@@ -6,986 +6,373 @@
     password: password1
     points: 10
     created_at: "2025-01-01T00:00:00Z"
-- model: myapp.member
-  pk: 2
-  fields:
-    username: member2
-    password: password2
-    points: 20
-    created_at: "2025-01-02T00:00:00Z"
-- model: myapp.member
-  pk: 3
-  fields:
-    username: member3
-    password: password3
-    points: 30
-    created_at: "2025-01-03T00:00:00Z"
-- model: myapp.member
-  pk: 4
-  fields:
-    username: member4
-    password: password4
-    points: 40
-    created_at: "2025-01-04T00:00:00Z"
-- model: myapp.member
-  pk: 5
-  fields:
-    username: member5
-    password: password5
-    points: 50
-    created_at: "2025-01-05T00:00:00Z"
-- model: myapp.member
-  pk: 6
-  fields:
-    username: member6
-    password: password6
-    points: 60
-    created_at: "2025-01-06T00:00:00Z"
-- model: myapp.member
-  pk: 7
-  fields:
-    username: member7
-    password: password7
-    points: 70
-    created_at: "2025-01-07T00:00:00Z"
-- model: myapp.member
-  pk: 8
-  fields:
-    username: member8
-    password: password8
-    points: 80
-    created_at: "2025-01-08T00:00:00Z"
-- model: myapp.member
-  pk: 9
-  fields:
-    username: member9
-    password: password9
-    points: 90
-    created_at: "2025-01-09T00:00:00Z"
-- model: myapp.member
-  pk: 10
-  fields:
-    username: member10
-    password: password10
-    points: 100
-    created_at: "2025-01-10T00:00:00Z"
-- model: myapp.member
-  pk: 11
-  fields:
-    username: member11
-    password: password11
-    points: 110
-    created_at: "2025-01-11T00:00:00Z"
-- model: myapp.member
-  pk: 12
-  fields:
-    username: member12
-    password: password12
-    points: 120
-    created_at: "2025-01-12T00:00:00Z"
-- model: myapp.member
-  pk: 13
-  fields:
-    username: member13
-    password: password13
-    points: 130
-    created_at: "2025-01-13T00:00:00Z"
-- model: myapp.member
-  pk: 14
-  fields:
-    username: member14
-    password: password14
-    points: 140
-    created_at: "2025-01-14T00:00:00Z"
-- model: myapp.member
-  pk: 15
-  fields:
-    username: member15
-    password: password15
-    points: 150
-    created_at: "2025-01-15T00:00:00Z"
-- model: myapp.member
-  pk: 16
-  fields:
-    username: member16
-    password: password16
-    points: 160
-    created_at: "2025-01-16T00:00:00Z"
-- model: myapp.member
-  pk: 17
-  fields:
-    username: member17
-    password: password17
-    points: 170
-    created_at: "2025-01-17T00:00:00Z"
-- model: myapp.member
-  pk: 18
-  fields:
-    username: member18
-    password: password18
-    points: 180
-    created_at: "2025-01-18T00:00:00Z"
-- model: myapp.member
-  pk: 19
-  fields:
-    username: member19
-    password: password19
-    points: 190
-    created_at: "2025-01-19T00:00:00Z"
-- model: myapp.member
-  pk: 20
-  fields:
-    username: member20
-    password: password20
-    points: 200
-    created_at: "2025-01-20T00:00:00Z"
 
-# Fixture สำหรับ model Menu (20 รายการ)
+# Fixture สำหรับ model Menu (41 รายการ)
 - model: myapp.menu
   pk: 1
   fields:
-    name: "Coffee Special 1"
-    price: "50"
+    name: "Almond Croissants"
+    price: "45"
     category: "coffee"
-    image: "menu_images/coffee1.jpg"
+    image: "menu_images/Almond Croissants.png"
     review: false
+
 - model: myapp.menu
   pk: 2
   fields:
-    name: "Tea Delight 1"
-    price: "40"
-    category: "tea"
-    image: "menu_images/tea1.jpg"
+    name: "Apple Pie"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Apple Pie Trat.png"
     review: false
+
 - model: myapp.menu
   pk: 3
   fields:
-    name: "Cocoa Magic 3"
-    price: "45"
-    category: "cocoa_milk"
-    image: "menu_images/cocoa3.jpg"
-    review: false
-- model: myapp.menu
-  pk: 4
-  fields:
-    name: "Snack Corner 4"
-    price: "30"
-    category: "snack"
-    image: "menu_images/snack4.jpg"
-    review: false
-- model: myapp.menu
-  pk: 5
-  fields:
-    name: "Bakery Bliss 5"
-    price: "35"
-    category: "bakery"
-    image: "menu_images/bakery5.jpg"
-    review: false
-- model: myapp.menu
-  pk: 6
-  fields:
-    name: "Coffee Special 6"
+    name: "Basque Cheesecake"
     price: "55"
     category: "coffee"
-    image: "menu_images/coffee6.jpg"
+    image: "menu_images/Basque Cheesecake.png"
     review: false
+
+- model: myapp.menu
+  pk: 4
+  fields:
+    name: "Blueberry Muffins"
+    price: "40"
+    category: "dessert"
+    image: "menu_images/Blueberry Muffins.png"
+    review: false
+
+- model: myapp.menu
+  pk: 5
+  fields:
+    name: "Brown Macadamia"
+    price: "45"
+    category: "dessert"
+    image: "menu_images/Brown Macadamia.png"
+    review: false
+
+- model: myapp.menu
+  pk: 6
+  fields:
+    name: "Brownie Cheesecake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Brownie Cheesecake.png"
+    review: false
+
 - model: myapp.menu
   pk: 7
   fields:
-    name: "Tea Delight 7"
-    price: "42"
-    category: "tea"
-    image: "menu_images/tea7.jpg"
+    name: "Butter Croissant"
+    price: "55"
+    category: "coffee"
+    image: "menu_images/Butter Croissant.png"
     review: false
+
 - model: myapp.menu
   pk: 8
   fields:
-    name: "Cocoa Magic 8"
-    price: "48"
-    category: "cocoa_milk"
-    image: "menu_images/cocoa8.jpg"
+    name: "Butterfly Pea Tea with Lemon and Powder"
+    price: "60"
+    category: "tea"
+    image: "menu_images/Butterfly Pea Tea with Lemon and Powder.png"
     review: false
+
 - model: myapp.menu
   pk: 9
   fields:
-    name: "Snack Corner 9"
-    price: "32"
-    category: "snack"
-    image: "menu_images/snack9.jpg"
+    name: "Caramel Milk Macchiato"
+    price: "40"
+    category: "coffee"
+    image: "menu_images/Caramel Milk Macchiato.png"
     review: false
+
 - model: myapp.menu
   pk: 10
   fields:
-    name: "Bakery Bliss 10"
-    price: "38"
-    category: "bakery"
-    image: "menu_images/bakery10.jpg"
+    name: "Chocolate Chip Cookies"
+    price: "45"
+    category: "dessert"
+    image: "menu_images/Chocolate Chip Cookies.png"
     review: false
+
 - model: myapp.menu
   pk: 11
   fields:
-    name: "Coffee Special 11"
+    name: "Chocolate Lava Croissant"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Chocolate Lava Croissant.png"
+    review: false
+
+- model: myapp.menu
+  pk: 12
+  fields:
+    name: "Chocolate Lava Muffins"
+    price: "55"
+    category: "dessert"
+    image: "menu_images/Chocolate Lava Muffins.png"
+    review: false
+
+- model: myapp.menu
+  pk: 13
+  fields:
+    name: "Coconut Latte"
     price: "60"
     category: "coffee"
-    image: "menu_images/coffee11.jpg"
+    image: "menu_images/Coconut Latte.png"
     review: false
-- model: myapp.menu
-  pk: 12
-  fields:
-    name: "Tea Delight 12"
-    price: "44"
-    category: "tea"
-    image: "menu_images/tea12.jpg"
-    review: false
-- model: myapp.menu
-  pk: 13
-  fields:
-    name: "Cocoa Magic 13"
-    price: "50"
-    category: "cocoa_milk"
-    image: "menu_images/cocoa13.jpg"
-    review: false
+
 - model: myapp.menu
   pk: 14
   fields:
-    name: "Snack Corner 14"
-    price: "33"
-    category: "snack"
-    image: "menu_images/snack14.jpg"
-    review: false
-- model: myapp.menu
-  pk: 15
-  fields:
-    name: "Bakery Bliss 15"
+    name: "Coffee Matcha Fusion"
     price: "40"
-    category: "bakery"
-    image: "menu_images/bakery15.jpg"
-    review: false
-- model: myapp.menu
-  pk: 16
-  fields:
-    name: "Coffee Special 16"
-    price: "65"
     category: "coffee"
-    image: "menu_images/coffee16.jpg"
+    image: "menu_images/Coffee Matcha Fusion.png"
     review: false
+
+- model: myapp.menu
+  pk: 15
+  fields:
+    name: "Crispy Waffles with Berry Sauce"
+    price: "45"
+    category: "dessert"
+    image: "menu_images/Crispy waffles with berry sauce.png"
+    review: false
+
+- model: myapp.menu
+  pk: 16
+  fields:
+    name: "Dandelion Apple Caramel"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Dandelion Apple Caramel.png"
+    review: false
+
 - model: myapp.menu
   pk: 17
   fields:
-    name: "Tea Delight 17"
-    price: "46"
+    name: "Dark Cocoa Iced"
+    price: "55"
+    category: "coffee"
+    image: "menu_images/Dark Cocoa Iced.png"
+    review: false
+
+- model: myapp.menu
+  pk: 18
+  fields:
+    name: "Dert Coffee"
+    price: "60"
+    category: "coffee"
+    image: "menu_images/Dert_Coffee.png"
+    review: false
+
+- model: myapp.menu
+  pk: 19
+  fields:
+    name: "Fresh Coconut Cake with Fresh Cream"
+    price: "40"
+    category: "dessert"
+    image: "menu_images/Fresh coconut cake with fresh cream.png"
+    review: false
+
+- model: myapp.menu
+  pk: 20
+  fields:
+    name: "Fresh Milk Oreo Blended"
+    price: "45"
+    category: "dessert"
+    image: "menu_images/Fresh milk Oreo blended.png"
+    review: false
+
+- model: myapp.menu
+  pk: 21
+  fields:
+    name: "Fresh Milk with Butterfly Pea Powder"
+    price: "50"
     category: "tea"
-    image: "menu_images/tea17.jpg"
+    image: "menu_images/Fresh milk with butterfly pea powder.png"
     review: false
+
 - model: myapp.menu
-  pk: 18
+  pk: 22
   fields:
-    name: "Cocoa Magic 18"
-    price: "52"
-    category: "cocoa_milk"
-    image: "menu_images/cocoa18.jpg"
+    name: "Green Tea Matcha"
+    price: "55"
+    category: "tea"
+    image: "menu_images/Green tea matcha.png"
     review: false
+
 - model: myapp.menu
-  pk: 19
+  pk: 23
   fields:
-    name: "Snack Corner 19"
-    price: "35"
-    category: "snack"
-    image: "menu_images/snack19.jpg"
+    name: "Honey Toast with Ice Cream"
+    price: "60"
+    category: "dessert"
+    image: "menu_images/Honey toast with ice cream.png"
     review: false
+
 - model: myapp.menu
-  pk: 20
+  pk: 24
   fields:
-    name: "Bakery Bliss 20"
-    price: "42"
-    category: "bakery"
-    image: "menu_images/bakery20.jpg"
+    name: "Hong Kong Egg Tart"
+    price: "40"
+    category: "dessert"
+    image: "menu_images/Hong Kong Egg Tart.png"
     review: false
 
-# Fixture สำหรับ model Review (20 รายการ)
-- model: myapp.review
-  pk: 1
+- model: myapp.menu
+  pk: 25
   fields:
-    member: 1
-    menu: 1
-    rating: 5
-    comment: "ยอดเยี่ยมมาก"
-    created_at: "2025-01-01T12:00:00Z"
-- model: myapp.review
-  pk: 2
-  fields:
-    member: 2
-    menu: 2
-    rating: 4
-    comment: "อร่อยแต่ราคาแพงไปนิด"
-    created_at: "2025-01-02T12:00:00Z"
-- model: myapp.review
-  pk: 3
-  fields:
-    member: 3
-    menu: 3
-    rating: 5
-    comment: "ชื่นชอบรสชาติและกลิ่นหอม"
-    created_at: "2025-01-03T12:00:00Z"
-- model: myapp.review
-  pk: 4
-  fields:
-    member: 4
-    menu: 4
-    rating: 4
-    comment: "ดีแต่ควรปรับปรุงบรรจุภัณฑ์"
-    created_at: "2025-01-04T12:00:00Z"
-- model: myapp.review
-  pk: 5
-  fields:
-    member: 5
-    menu: 5
-    rating: 5
-    comment: "รสชาติดีเหมาะกับทุกโอกาส"
-    created_at: "2025-01-05T12:00:00Z"
-- model: myapp.review
-  pk: 6
-  fields:
-    member: 6
-    menu: 6
-    rating: 4
-    comment: "ราคาเหมาะสมกับคุณภาพ"
-    created_at: "2025-01-06T12:00:00Z"
-- model: myapp.review
-  pk: 7
-  fields:
-    member: 7
-    menu: 7
-    rating: 5
-    comment: "ชอบมาก จะสั่งอีกแน่นอน"
-    created_at: "2025-01-07T12:00:00Z"
-- model: myapp.review
-  pk: 8
-  fields:
-    member: 8
-    menu: 8
-    rating: 4
-    comment: "อาจปรับปรุงการนำเสนอได้"
-    created_at: "2025-01-08T12:00:00Z"
-- model: myapp.review
-  pk: 9
-  fields:
-    member: 9
-    menu: 9
-    rating: 5
-    comment: "คุณภาพเหนือความคาดหมาย"
-    created_at: "2025-01-09T12:00:00Z"
-- model: myapp.review
-  pk: 10
-  fields:
-    member: 10
-    menu: 10
-    rating: 4
-    comment: "รสชาติดี แต่บางครั้งรู้สึกเค็มเกินไป"
-    created_at: "2025-01-10T12:00:00Z"
-- model: myapp.review
-  pk: 11
-  fields:
-    member: 11
-    menu: 11
-    rating: 5
-    comment: "เหมาะสำหรับช่วงบ่าย"
-    created_at: "2025-01-11T12:00:00Z"
-- model: myapp.review
-  pk: 12
-  fields:
-    member: 12
-    menu: 12
-    rating: 4
-    comment: "รสชาตินุ่มนวลและหอมกลิ่นชา"
-    created_at: "2025-01-12T12:00:00Z"
-- model: myapp.review
-  pk: 13
-  fields:
-    member: 13
-    menu: 13
-    rating: 5
-    comment: "กาแฟเข้มข้นและมีความหอม"
-    created_at: "2025-01-13T12:00:00Z"
-- model: myapp.review
-  pk: 14
-  fields:
-    member: 14
-    menu: 14
-    rating: 4
-    comment: "ขนมอร่อย แต่ต้องปรับปรุงบรรจุภัณฑ์"
-    created_at: "2025-01-14T12:00:00Z"
-- model: myapp.review
-  pk: 15
-  fields:
-    member: 15
-    menu: 15
-    rating: 5
-    comment: "บรรยากาศร้านดีมาก"
-    created_at: "2025-01-15T12:00:00Z"
-- model: myapp.review
-  pk: 16
-  fields:
-    member: 16
-    menu: 16
-    rating: 4
-    comment: "ค่อนข้างถูกใจ แต่ราคาอาจสูงไปสำหรับบางคน"
-    created_at: "2025-01-16T12:00:00Z"
-- model: myapp.review
-  pk: 17
-  fields:
-    member: 17
-    menu: 17
-    rating: 5
-    comment: "เยี่ยมมาก รสชาติดีไม่ผิดหวัง"
-    created_at: "2025-01-17T12:00:00Z"
-- model: myapp.review
-  pk: 18
-  fields:
-    member: 18
-    menu: 18
-    rating: 4
-    comment: "ชอบมาก แต่บางครั้งรสชาติอาจเปลี่ยนแปลงได้"
-    created_at: "2025-01-18T12:00:00Z"
-- model: myapp.review
-  pk: 19
-  fields:
-    member: 19
-    menu: 19
-    rating: 5
-    comment: "รีวิวนี้ได้รับความนิยมจากลูกค้า"
-    created_at: "2025-01-19T12:00:00Z"
-- model: myapp.review
-  pk: 20
-  fields:
-    member: 20
-    menu: 20
-    rating: 4
-    comment: "ยังดีอยู่แต่มีจุดที่ควรปรับปรุง"
-    created_at: "2025-01-20T12:00:00Z"
+    name: "Iced Americano"
+    price: "45"
+    category: "coffee"
+    image: "menu_images/Iced Americano.png"
+    review: false
 
-# Fixture สำหรับ model Promotion (20 รายการ)
-- model: myapp.promotion
-  pk: 1
+- model: myapp.menu
+  pk: 26
   fields:
-    title: "โปรโมชั่นเริ่มต้น 1"
-    description: "ส่วนลด 10% สำหรับเมนูทุกชนิด"
-    discount_percentage: 10
-    start_date: "2025-01-01"
-    end_date: "2025-01-10"
-    image: "promotions/promo1.jpg"
-- model: myapp.promotion
-  pk: 2
-  fields:
-    title: "โปรโมชั่นพิเศษ 2"
-    description: "ลด 20% สำหรับกาแฟทุกแก้ว"
-    discount_percentage: 20
-    start_date: "2025-02-01"
-    end_date: "2025-02-10"
-    image: "promotions/promo2.jpg"
-- model: myapp.promotion
-  pk: 3
-  fields:
-    title: "โปรโมชั่นสุดคุ้ม 3"
-    description: "ลด 15% สำหรับเมนูชา"
-    discount_percentage: 15
-    start_date: "2025-03-01"
-    end_date: "2025-03-10"
-    image: "promotions/promo3.jpg"
-- model: myapp.promotion
-  pk: 4
-  fields:
-    title: "โปรโมชั่นฮิต 4"
-    description: "ส่วนลด 10% สำหรับเมนูเบเกอรี่"
-    discount_percentage: 10
-    start_date: "2025-04-01"
-    end_date: "2025-04-10"
-    image: "promotions/promo4.jpg"
-- model: myapp.promotion
-  pk: 5
-  fields:
-    title: "โปรโมชั่นพิเศษ 5"
-    description: "ลด 25% สำหรับเมนูกาแฟเย็น"
-    discount_percentage: 25
-    start_date: "2025-05-01"
-    end_date: "2025-05-10"
-    image: "promotions/promo5.jpg"
-- model: myapp.promotion
-  pk: 6
-  fields:
-    title: "โปรโมชั่นสุดคุ้ม 6"
-    description: "ส่วนลด 15% สำหรับเมนูโกโก้และนม"
-    discount_percentage: 15
-    start_date: "2025-06-01"
-    end_date: "2025-06-10"
-    image: "promotions/promo6.jpg"
-- model: myapp.promotion
-  pk: 7
-  fields:
-    title: "โปรโมชั่นฮิต 7"
-    description: "ลด 20% สำหรับเมนูขนม"
-    discount_percentage: 20
-    start_date: "2025-07-01"
-    end_date: "2025-07-10"
-    image: "promotions/promo7.jpg"
-- model: myapp.promotion
-  pk: 8
-  fields:
-    title: "โปรโมชั่นพิเศษ 8"
-    description: "ส่วนลด 30% สำหรับเมนูพิเศษ"
-    discount_percentage: 30
-    start_date: "2025-08-01"
-    end_date: "2025-08-10"
-    image: "promotions/promo8.jpg"
-- model: myapp.promotion
-  pk: 9
-  fields:
-    title: "โปรโมชั่นสุดคุ้ม 9"
-    description: "ลด 10% สำหรับทุกการสั่งซื้อ"
-    discount_percentage: 10
-    start_date: "2025-09-01"
-    end_date: "2025-09-10"
-    image: "promotions/promo9.jpg"
-- model: myapp.promotion
-  pk: 10
-  fields:
-    title: "โปรโมชั่นฮิต 10"
-    description: "ลด 20% สำหรับลูกค้าประจำ"
-    discount_percentage: 20
-    start_date: "2025-10-01"
-    end_date: "2025-10-10"
-    image: "promotions/promo10.jpg"
-- model: myapp.promotion
-  pk: 11
-  fields:
-    title: "โปรโมชั่นสุดคุ้ม 11"
-    description: "ลด 15% สำหรับเมนูพิเศษ"
-    discount_percentage: 15
-    start_date: "2025-11-01"
-    end_date: "2025-11-10"
-    image: "promotions/promo11.jpg"
-- model: myapp.promotion
-  pk: 12
-  fields:
-    title: "โปรโมชั่นฮิต 12"
-    description: "ส่วนลด 10% สำหรับเมนูใหม่"
-    discount_percentage: 10
-    start_date: "2025-12-01"
-    end_date: "2025-12-10"
-    image: "promotions/promo12.jpg"
-- model: myapp.promotion
-  pk: 13
-  fields:
-    title: "โปรโมชั่นพิเศษ 13"
-    description: "ลด 20% สำหรับเมนูเครื่องดื่ม"
-    discount_percentage: 20
-    start_date: "2025-01-15"
-    end_date: "2025-01-25"
-    image: "promotions/promo13.jpg"
-- model: myapp.promotion
-  pk: 14
-  fields:
-    title: "โปรโมชั่นสุดคุ้ม 14"
-    description: "ลด 25% สำหรับการสั่งซื้อครั้งแรก"
-    discount_percentage: 25
-    start_date: "2025-02-15"
-    end_date: "2025-02-25"
-    image: "promotions/promo14.jpg"
-- model: myapp.promotion
-  pk: 15
-  fields:
-    title: "โปรโมชั่นฮิต 15"
-    description: "ส่วนลด 15% สำหรับเมนูพิเศษเฉพาะวันหยุด"
-    discount_percentage: 15
-    start_date: "2025-03-15"
-    end_date: "2025-03-25"
-    image: "promotions/promo15.jpg"
-- model: myapp.promotion
-  pk: 16
-  fields:
-    title: "โปรโมชั่นพิเศษ 16"
-    description: "ลด 20% สำหรับลูกค้าที่แนะนำเพื่อน"
-    discount_percentage: 20
-    start_date: "2025-04-15"
-    end_date: "2025-04-25"
-    image: "promotions/promo16.jpg"
-- model: myapp.promotion
-  pk: 17
-  fields:
-    title: "โปรโมชั่นสุดคุ้ม 17"
-    description: "ลด 30% สำหรับเมนูคัดพิเศษ"
-    discount_percentage: 30
-    start_date: "2025-05-15"
-    end_date: "2025-05-25"
-    image: "promotions/promo17.jpg"
-- model: myapp.promotion
-  pk: 18
-  fields:
-    title: "โปรโมชั่นฮิต 18"
-    description: "ส่วนลด 10% สำหรับการสั่งซื้อออนไลน์"
-    discount_percentage: 10
-    start_date: "2025-06-15"
-    end_date: "2025-06-25"
-    image: "promotions/promo18.jpg"
-- model: myapp.promotion
-  pk: 19
-  fields:
-    title: "โปรโมชั่นพิเศษ 19"
-    description: "ลด 20% สำหรับเมนูพิเศษช่วงเทศกาล"
-    discount_percentage: 20
-    start_date: "2025-07-15"
-    end_date: "2025-07-25"
-    image: "promotions/promo19.jpg"
-- model: myapp.promotion
-  pk: 20
-  fields:
-    title: "โปรโมชั่นสุดคุ้ม 20"
-    description: "ส่วนลด 25% สำหรับการสั่งซื้อครั้งใหญ่"
-    discount_percentage: 25
-    start_date: "2025-08-15"
-    end_date: "2025-08-25"
-    image: "promotions/promo20.jpg"
+    name: "Iced Coconut Coffee"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Iced coconut coffee.png"
+    review: false
 
-# Fixture สำหรับ model Event (20 รายการ)
-- model: myapp.event
-  pk: 1
+- model: myapp.menu
+  pk: 27
   fields:
-    title: "กิจกรรม Coffee Tasting 1"
-    description: "เชิญชวนลูกค้ามาร่วมชิมกาแฟใหม่"
-    event_date: "2025-03-01T18:00:00Z"
-    location: "สาขา 1"
-    image: "events/event1.jpg"
-    participants: [1, 2]
-- model: myapp.event
-  pk: 2
-  fields:
-    title: "กิจกรรม Workshop 2"
-    description: "อบรมการชงกาแฟสำหรับมือใหม่"
-    event_date: "2025-03-05T18:00:00Z"
-    location: "สาขา 2"
-    image: "events/event2.jpg"
-    participants: [1, 3]
-- model: myapp.event
-  pk: 3
-  fields:
-    title: "กิจกรรม Coffee Tasting 3"
-    description: "ชิมเมนูกาแฟสูตรพิเศษ"
-    event_date: "2025-03-07T18:00:00Z"
-    location: "สาขา 3"
-    image: "events/event3.jpg"
-    participants: [2, 4]
-- model: myapp.event
-  pk: 4
-  fields:
-    title: "กิจกรรม Workshop 4"
-    description: "อบรมเทคนิคการชงกาแฟ"
-    event_date: "2025-03-09T18:00:00Z"
-    location: "สาขา 4"
-    image: "events/event4.jpg"
-    participants: [3, 5]
-- model: myapp.event
-  pk: 5
-  fields:
-    title: "กิจกรรม Coffee Tasting 5"
-    description: "ชิมกาแฟพร้อมให้ความรู้"
-    event_date: "2025-03-11T18:00:00Z"
-    location: "สาขา 5"
-    image: "events/event5.jpg"
-    participants: [4, 6]
-- model: myapp.event
-  pk: 6
-  fields:
-    title: "กิจกรรม Workshop 6"
-    description: "อบรมการชงกาแฟขั้นสูง"
-    event_date: "2025-03-13T18:00:00Z"
-    location: "สาขา 6"
-    image: "events/event6.jpg"
-    participants: [5, 7]
-- model: myapp.event
-  pk: 7
-  fields:
-    title: "กิจกรรม Coffee Tasting 7"
-    description: "สำรวจรสชาติใหม่ของกาแฟ"
-    event_date: "2025-03-15T18:00:00Z"
-    location: "สาขา 7"
-    image: "events/event7.jpg"
-    participants: [6, 8]
-- model: myapp.event
-  pk: 8
-  fields:
-    title: "กิจกรรม Workshop 8"
-    description: "เรียนรู้เทคนิคการสกัดกาแฟ"
-    event_date: "2025-03-17T18:00:00Z"
-    location: "สาขา 8"
-    image: "events/event8.jpg"
-    participants: [7, 9]
-- model: myapp.event
-  pk: 9
-  fields:
-    title: "กิจกรรม Coffee Tasting 9"
-    description: "ชิมกาแฟและแลกเปลี่ยนความคิดเห็น"
-    event_date: "2025-03-19T18:00:00Z"
-    location: "สาขา 9"
-    image: "events/event9.jpg"
-    participants: [8, 10]
-- model: myapp.event
-  pk: 10
-  fields:
-    title: "กิจกรรม Workshop 10"
-    description: "อบรมเทคนิคการชงกาแฟจากมืออาชีพ"
-    event_date: "2025-03-21T18:00:00Z"
-    location: "สาขา 10"
-    image: "events/event10.jpg"
-    participants: [9, 11]
-- model: myapp.event
-  pk: 11
-  fields:
-    title: "กิจกรรม Coffee Tasting 11"
-    description: "ลิ้มลองกาแฟสูตรเฉพาะ"
-    event_date: "2025-03-23T18:00:00Z"
-    location: "สาขา 11"
-    image: "events/event11.jpg"
-    participants: [10, 12]
-- model: myapp.event
-  pk: 12
-  fields:
-    title: "กิจกรรม Workshop 12"
-    description: "อบรมการชงกาแฟในแบบสบายๆ"
-    event_date: "2025-03-25T18:00:00Z"
-    location: "สาขา 12"
-    image: "events/event12.jpg"
-    participants: [11, 13]
-- model: myapp.event
-  pk: 13
-  fields:
-    title: "กิจกรรม Coffee Tasting 13"
-    description: "สัมผัสประสบการณ์กาแฟแท้"
-    event_date: "2025-03-27T18:00:00Z"
-    location: "สาขา 13"
-    image: "events/event13.jpg"
-    participants: [12, 14]
-- model: myapp.event
-  pk: 14
-  fields:
-    title: "กิจกรรม Workshop 14"
-    description: "เรียนรู้วิธีการชงกาแฟแบบมืออาชีพ"
-    event_date: "2025-03-29T18:00:00Z"
-    location: "สาขา 14"
-    image: "events/event14.jpg"
-    participants: [13, 15]
-- model: myapp.event
-  pk: 15
-  fields:
-    title: "กิจกรรม Coffee Tasting 15"
-    description: "ชิมกาแฟสูตรใหม่ล่าสุด"
-    event_date: "2025-03-31T18:00:00Z"
-    location: "สาขา 15"
-    image: "events/event15.jpg"
-    participants: [14, 16]
-- model: myapp.event
-  pk: 16
-  fields:
-    title: "กิจกรรม Workshop 16"
-    description: "อบรมเทคนิคการชงกาแฟเฉพาะทาง"
-    event_date: "2025-04-02T18:00:00Z"
-    location: "สาขา 16"
-    image: "events/event16.jpg"
-    participants: [15, 17]
-- model: myapp.event
-  pk: 17
-  fields:
-    title: "กิจกรรม Coffee Tasting 17"
-    description: "พบกับสูตรกาแฟลับเฉพาะ"
-    event_date: "2025-04-04T18:00:00Z"
-    location: "สาขา 17"
-    image: "events/event17.jpg"
-    participants: [16, 18]
-- model: myapp.event
-  pk: 18
-  fields:
-    title: "กิจกรรม Workshop 18"
-    description: "เรียนรู้การชงกาแฟเพื่อสุขภาพ"
-    event_date: "2025-04-06T18:00:00Z"
-    location: "สาขา 18"
-    image: "events/event18.jpg"
-    participants: [17, 19]
-- model: myapp.event
-  pk: 19
-  fields:
-    title: "กิจกรรม Coffee Tasting 19"
-    description: "สัมผัสรสชาติที่แตกต่างของกาแฟ"
-    event_date: "2025-04-08T18:00:00Z"
-    location: "สาขา 19"
-    image: "events/event19.jpg"
-    participants: [18, 20]
-- model: myapp.event
-  pk: 20
-  fields:
-    title: "กิจกรรม Workshop 20"
-    description: "อบรมการชงกาแฟและการบริหารร้าน"
-    event_date: "2025-04-10T18:00:00Z"
-    location: "สาขา 20"
-    image: "events/event20.jpg"
-    participants: [19, 1]
+    name: "Iced Latte"
+    price: "55"
+    category: "coffee"
+    image: "menu_images/Iced Latte.png"
+    review: false
 
-# Fixture สำหรับ model Coupon (20 รายการ)
-- model: myapp.coupon
-  pk: 1
+- model: myapp.menu
+  pk: 28
   fields:
-    code: "COUPON1"
-    discount_amount: "5.00"
-    valid_from: "2025-01-01"
-    valid_until: "2025-12-31"
-    active: true
-- model: myapp.coupon
-  pk: 2
+    name: "Lemon Meringue Tart"
+    price: "60"
+    category: "dessert"
+    image: "menu_images/Lemon Meringue Tart.png"
+    review: false
+
+- model: myapp.menu
+  pk: 29
   fields:
-    code: "COUPON2"
-    discount_amount: "10.00"
-    valid_from: "2025-02-01"
-    valid_until: "2025-11-30"
-    active: true
-- model: myapp.coupon
-  pk: 3
+    name: "Lemon Yogurt Cake"
+    price: "40"
+    category: "dessert"
+    image: "menu_images/Lemon Yogurt Cake.png"
+    review: false
+
+- model: myapp.menu
+  pk: 30
   fields:
-    code: "COUPON3"
-    discount_amount: "7.50"
-    valid_from: "2025-03-01"
-    valid_until: "2025-12-15"
-    active: true
-- model: myapp.coupon
-  pk: 4
+    name: "Macarons"
+    price: "45"
+    category: "dessert"
+    image: "menu_images/Macarons.png"
+    review: false
+
+- model: myapp.menu
+  pk: 31
   fields:
-    code: "COUPON4"
-    discount_amount: "12.00"
-    valid_from: "2025-04-01"
-    valid_until: "2025-12-01"
-    active: true
-- model: myapp.coupon
-  pk: 5
+    name: "Magic Ice Lemon Tea"
+    price: "50"
+    category: "tea"
+    image: "menu_images/Magic Ice Lemon Tea.png"
+    review: false
+
+- model: myapp.menu
+  pk: 32
   fields:
-    code: "COUPON5"
-    discount_amount: "8.00"
-    valid_from: "2025-05-01"
-    valid_until: "2025-11-15"
-    active: true
-- model: myapp.coupon
-  pk: 6
+    name: "Mandarin Orange Cake"
+    price: "55"
+    category: "dessert"
+    image: "menu_images/Mandarin Orange Cake.png"
+    review: false
+
+- model: myapp.menu
+  pk: 33
   fields:
-    code: "COUPON6"
-    discount_amount: "6.50"
-    valid_from: "2025-06-01"
-    valid_until: "2025-10-31"
-    active: true
-- model: myapp.coupon
-  pk: 7
+    name: "Mango Cheesecake"
+    price: "60"
+    category: "dessert"
+    image: "menu_images/Mango Cheesecake.png"
+    review: false
+
+- model: myapp.menu
+  pk: 34
   fields:
-    code: "COUPON7"
-    discount_amount: "9.00"
-    valid_from: "2025-07-01"
-    valid_until: "2025-10-15"
-    active: true
-- model: myapp.coupon
-  pk: 8
+    name: "Orange Espresso"
+    price: "40"
+    category: "coffee"
+    image: "menu_images/OrangeEspresso.png"
+    review: false
+
+- model: myapp.menu
+  pk: 35
   fields:
-    code: "COUPON8"
-    discount_amount: "11.00"
-    valid_from: "2025-08-01"
-    valid_until: "2025-09-30"
-    active: true
-- model: myapp.coupon
-  pk: 9
+    name: "Pandan Coconut Cake"
+    price: "45"
+    category: "dessert"
+    image: "menu_images/Pandan Coconut Cake.png"
+    review: false
+
+- model: myapp.menu
+  pk: 36
   fields:
-    code: "COUPON9"
-    discount_amount: "5.50"
-    valid_from: "2025-09-01"
-    valid_until: "2025-12-31"
-    active: true
-- model: myapp.coupon
-  pk: 10
+    name: "Passion Fruit Cheesecake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Passion Fruit Cheesecake.png"
+    review: false
+
+- model: myapp.menu
+  pk: 37
   fields:
-    code: "COUPON10"
-    discount_amount: "10.50"
-    valid_from: "2025-10-01"
-    valid_until: "2025-11-30"
-    active: true
-- model: myapp.coupon
-  pk: 11
+    name: "Red Velvet Cake"
+    price: "55"
+    category: "dessert"
+    image: "menu_images/Red Velvet Cake.png"
+    review: false
+
+- model: myapp.menu
+  pk: 38
   fields:
-    code: "COUPON11"
-    discount_amount: "7.00"
-    valid_from: "2025-11-01"
-    valid_until: "2025-12-15"
-    active: true
-- model: myapp.coupon
-  pk: 12
+    name: "Strawberry Jam Scones"
+    price: "60"
+    category: "dessert"
+    image: "menu_images/Strawberry Jam Scones.png"
+    review: false
+
+- model: myapp.menu
+  pk: 39
   fields:
-    code: "COUPON12"
-    discount_amount: "12.50"
-    valid_from: "2025-12-01"
-    valid_until: "2025-12-31"
-    active: true
-- model: myapp.coupon
-  pk: 13
+    name: "Taro Cream Cake"
+    price: "40"
+    category: "dessert"
+    image: "menu_images/Taro Cream Cake.png"
+    review: false
+
+- model: myapp.menu
+  pk: 40
   fields:
-    code: "COUPON13"
-    discount_amount: "8.50"
-    valid_from: "2025-01-15"
-    valid_until: "2025-12-15"
-    active: true
-- model: myapp.coupon
-  pk: 14
+    name: "Thai Tea with Pearls"
+    price: "45"
+    category: "tea"
+    image: "menu_images/Thai Tea with Pearls.png"
+    review: false
+
+- model: myapp.menu
+  pk: 41
   fields:
-    code: "COUPON14"
-    discount_amount: "9.50"
-    valid_from: "2025-02-15"
-    valid_until: "2025-11-15"
-    active: true
-- model: myapp.coupon
-  pk: 15
-  fields:
-    code: "COUPON15"
-    discount_amount: "6.00"
-    valid_from: "2025-03-15"
-    valid_until: "2025-10-15"
-    active: true
-- model: myapp.coupon
-  pk: 16
-  fields:
-    code: "COUPON16"
-    discount_amount: "11.50"
-    valid_from: "2025-04-15"
-    valid_until: "2025-09-30"
-    active: true
-- model: myapp.coupon
-  pk: 17
-  fields:
-    code: "COUPON17"
-    discount_amount: "7.75"
-    valid_from: "2025-05-15"
-    valid_until: "2025-12-01"
-    active: true
-- model: myapp.coupon
-  pk: 18
-  fields:
-    code: "COUPON18"
-    discount_amount: "10.25"
-    valid_from: "2025-06-15"
-    valid_until: "2025-11-15"
-    active: true
-- model: myapp.coupon
-  pk: 19
-  fields:
-    code: "COUPON19"
-    discount_amount: "8.25"
-    valid_from: "2025-07-15"
-    valid_until: "2025-12-15"
-    active: true
-- model: myapp.coupon
-  pk: 20
-  fields:
-    code: "COUPON20"
-    discount_amount: "9.00"
-    valid_from: "2025-08-15"
-    valid_until: "2025-11-30"
-    active: true
+    name: "Yogurt Blueberry Cake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Yogurt Blueberry Cake.png"
+    review: false

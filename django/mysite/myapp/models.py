@@ -8,8 +8,7 @@ class Member(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
     points = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)  # เพิ่มบรรทัดนี้
-    # สามารถเพิ่มฟิลด์สำหรับบทบาท เช่น 'customer' หรือ 'owner' ได้ตามต้องการ
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.username
@@ -57,6 +56,17 @@ class Promotion(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     image = models.ImageField(upload_to='promotions/', blank=True, null=True)
+    usage_limit = models.PositiveIntegerField(
+        default=0, 
+        help_text="จำนวนครั้งที่ใช้ได้ (0 หมายถึงไม่จำกัด)"
+    )
+    # ฟิลด์นี้กำหนดว่าโปรโมชั่นนี้ใช้กับเมนูไหนบ้าง หากเว้นว่าง หมายถึงใช้ได้ทั้งร้าน
+    applicable_menus = models.ManyToManyField(
+        Menu, 
+        blank=True, 
+        related_name='promotions', 
+        help_text="ถ้าเว้นว่างหมายถึงโปรโมชั่นใช้ได้กับทุกเมนู"
+    )
 
     def __str__(self):
         return self.title

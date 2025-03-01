@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center" style="color: black;">รายละเอียดการสั่งซื้อ</h2>
+    <div class="card mt-4 p-4">
+        <div class="row">
+            <!-- Left Column: รูปสินค้า -->
+            <div class="col-md-5">
+                {% if menu.image %}
+                <img src="{{ menu.image.url }}" alt="{{ menu.name }}" class="img-fluid"
+                    style="max-height:400px; object-fit:cover;">
+                {% else %}
+                <img src="https://via.placeholder.com/400x300.png?text=ไม่มีรูป" alt="ไม่มีรูป" class="img-fluid">
+                {% endif %}
+            </div>
+            <!-- Right Column: รายละเอียดสินค้า -->
+            <div class="col-md-7">
+                <!-- เพิ่ม action ให้กับ form เพื่อส่งไปยัง process_order -->
+                <form id="order-form" method="post" action="{% url 'process_order' menu.id %}">
+                    {% csrf_token %}
+                    <h3 style="color: black;">{{ menu.name }}</h3>
+                    <p style="font-size: 1.5rem; color: black;">
+                        <strong>ราคา:</strong>
+                        <span id="full-price">{{ menu.price }}</span>
+                        บาท
+                    </p>
+
+                    <!-- ส่วนเลือกจำนวน -->
+                    <div class="quantity-selector my-4">
+                        <label for="quantity" style="color: black; font-weight: bold;">จำนวน:</label>
+                        <div class="input-group square-input-group" style="max-width: 200px;">
+                            <button type="button" class="btn btn-dark square-btn" id="button-minus">-</button>
+                            <input type="number" name="quantity" id="quantity"
+                                class="form-control text-center square-input" value="1" min="1">
+                            <button type="button" class="btn btn-dark square-btn" id="button-plus">+</button>
+                        </div>
+                    </div>
+
+                    <!-- ส่วนโปรโมชั่น -->
+                    <div class="promotion-section my-4">
+                        <h5 style="color: black;">โปรโมชั่น</h5>
+                        {% if user.is_authenticated %}
+                            {% if menu.promotions.all|length %}
+                                <div id="promo-options" class="mb-3">
+                                    {% for promo in menu.promotions.all %}
+                                    <div class="promo-item mb-2" style="border:1px solid #ccc; padding: 8px;">
+                                        <input type="radio" name="selected_promo" value="{{ promo.discount_percentage }}"
+                                            id="promo_{{ promo.pk }}">
+                                        <label for="promo_{{ promo.pk }}" style="color: black; font-weight: bold;">
+                                            {{ promo.title }} - ลด {{ promo.discount_percentage }}%
+                                        </label>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- ตัวเลือกยกเลิกโปรโมชั่น -->
+                                    <div class="promo-item mb-2" style="border:1px solid #ccc; padding: 8px;">
+                                        <input type="radio" name="selected_promo" value="0" id="promo_none">
+                                        <label for="promo_none" style="color: black; font-weight: bold;">ไม่ใช้โปรโมชั่น</label>
+                                    </div>
+                                </div>
+                                <!-- ส่วนแสดงราคาหลังลด (ซ่อนโดยค่าเริ่มต้น) -->
+                                <div id="promo-price-container" style="display: none;">
+                                    <p style="font-size: 1.3rem; color: black;">
+                                        <strong>ราคาหลังลด:</strong>
+                                        <span id="original-price-strike" style="text-decoration: line-through;">{{ menu.price }}</span>
+                                        <span id="new-discounted-price" style="color: red; font-weight: bold; margin-left: 10px;"></span> บาท
+                                    </p>
+                                </div>
+                            {% else %}
+                                <p style="color: black;">ไม่มีโปรโมชั่นสำหรับสินค้านี้</p>
+                            {% endif %}
+                        {% else %}
+                            <p style="color: black;">กรุณา <a href="{% url 'login' %}?next={% url 'buy' menu.id %}"
+                                    class="square-btn">เข้าสู่ระบบ</a> เพื่อใช้โปรโมชั่น</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- ปุ่มยืนยันการสั่งซื้อ (เปิด Modal) -->
+                    <button type="button" class="btn btn-dark square-btn mt-3" data-bs-toggle="modal"
+                        data-bs-target="#confirmModal">
+                        ยืนยันการสั่งซื้อ
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal ยืนยันการสั่งซื้อ -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 0;">
+            <div class="modal-header" style="border: none;">
+                <h5 class="modal-title" id="confirmModalLabel" style="color: black;">ยืนยันการสั่งซื้อ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="color: black;">
+                คุณต้องการสั่งซื้อสินค้าชิ้นนี้หรือไม่?
+            </div>
+            <div class="modal-footer" style="border: none;">
+                <button type="button" class="btn btn-secondary square-btn" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="button" id="confirm-order-btn" class="btn btn-dark square-btn">สั่งซื้อ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ปรับปุ่มให้เป็นสี่เหลี่ยม */
+    .square-btn {
+        border-radius: 0 !important;
+    }
+    /* ปรับ input ให้เป็นสี่เหลี่ยม */
+    .square-input {
+        border-radius: 0 !important;
+    }
+    /* สำหรับกลุ่ม input */
+    .square-input-group .form-control {
+        border-radius: 0 !important;
+    }
+    /* กำหนดให้การ์ดมีเส้นขอบและไม่มีความโค้ง */
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 0;
+    }
+    /* ปรับระยะห่างของส่วนต่างๆ */
+    .quantity-selector,
+    .promotion-section {
+        margin-bottom: 20px;
+    }
+    /* ปรับสไตล์สำหรับราคาหลังลด */
+    #original-price-strike {
+        font-size: 1.3rem;
+        color: #555;
+    }
+    #new-discounted-price {
+        font-size: 1.5rem;
+        color: red;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+    /* ปรับสไตล์สำหรับรายละเอียดโปรโมชั่น */
+    .promo-item {
+        background-color: #f9f9f9;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // สำหรับเพิ่ม/ลดจำนวนสินค้า
+        const buttonMinus = document.getElementById('button-minus');
+        const buttonPlus = document.getElementById('button-plus');
+        const quantityInput = document.getElementById('quantity');
+
+        buttonMinus.addEventListener('click', function () {
+            let currentVal = parseInt(quantityInput.value);
+            if (currentVal > 1) {
+                quantityInput.value = currentVal - 1;
+            }
+        });
+
+        buttonPlus.addEventListener('click', function () {
+            let currentVal = parseInt(quantityInput.value);
+            quantityInput.value = currentVal + 1;
+        });
+
+        // สำหรับจัดการโปรโมชั่น: radio button ให้สามารถ toggle (คลิกซ้ำเพื่อยกเลิก)
+        const promoOptions = document.getElementById('promo-options');
+        const promoPriceContainer = document.getElementById('promo-price-container');
+        const newPriceElem = document.getElementById('new-discounted-price');
+        const originalPriceElem = document.getElementById('original-price-strike');
+        // ลบเครื่องหมายที่ไม่ใช่ตัวเลข (เก็บเฉพาะ digits และจุด)
+        const originalPriceText = originalPriceElem.textContent.replace(/[^0-9.]/g, '').trim();
+        const originalPrice = parseFloat(originalPriceText);
+
+        if (promoOptions) {
+            const radioButtons = promoOptions.querySelectorAll('input[name="selected_promo"]');
+            radioButtons.forEach(function (radio) {
+                radio.addEventListener('click', function (event) {
+                    // ถ้า radio ที่ถูกคลิกอยู่แล้วถูกเลือกอยู่ ให้ยกเลิกการเลือก
+                    if (this.checked && this.classList.contains('already-selected')) {
+                        this.checked = false;
+                        this.classList.remove('already-selected');
+                        newPriceElem.textContent = "";
+                        promoPriceContainer.style.display = 'none';
+                    } else {
+                        // ลบคลาส already-selected จาก radio ทุกตัว
+                        radioButtons.forEach(rb => rb.classList.remove('already-selected'));
+                        // กำหนดคลาส already-selected ให้กับ radio ที่ถูกคลิก
+                        this.classList.add('already-selected');
+                        const discount = parseFloat(this.value);
+                        if (discount > 0) {
+                            const discountAmount = originalPrice * (discount / 100);
+                            const newPrice = originalPrice - discountAmount;
+                            newPriceElem.textContent = newPrice.toFixed(0);
+                            promoPriceContainer.style.display = 'block';
+                        } else {
+                            newPriceElem.textContent = "";
+                            promoPriceContainer.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        }
+
+        // สำหรับ modal ยืนยันการสั่งซื้อ
+        const confirmOrderBtn = document.getElementById('confirm-order-btn');
+        const orderForm = document.getElementById('order-form');
+        confirmOrderBtn.addEventListener('click', function () {
+            // ส่งฟอร์มไปยัง process_order view (ตาม action ของ form)
+            orderForm.submit();
+        });
+    });
+</script>
+{% endblock %}

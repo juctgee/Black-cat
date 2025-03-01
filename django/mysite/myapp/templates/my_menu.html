@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center" style="color: black;">รายการสั่งซื้อของฉัน</h2>
+    {% if orders %}
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>เลขที่สั่งซื้อ</th>
+                    <th>สินค้า</th>
+                    <th>จำนวน</th>
+                    <th>ราคารวม</th>
+                    <th>วันที่สั่งซื้อ</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.menu.name }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.total_price }}</td>
+                    <td>{{ order.order_date|date:"d M Y, H:i" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-center" style="color: black;">ยังไม่มีรายการสั่งซื้อ</p>
+    {% endif %}
+</div>
+{% endblock %}
