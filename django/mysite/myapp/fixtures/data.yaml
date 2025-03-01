@@ -1,0 +1,369 @@
+- model: menu.image
+  pk: 1
+  fields:
+    name: "Almond Croissants"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Almond Croissants.png"
+    review: false
+
+- model: menu.image
+  pk: 2
+  fields:
+    name: "Apple Pie"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Apple Pie.png"
+    review: false
+
+- model: menu.image
+  pk: 3
+  fields:
+    name: "Bacon Croissants"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Bacon Croissants.png"
+    review: false
+
+- model: menu.image
+  pk: 4
+  fields:
+    name: "Blueberry Muffins"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Blueberry Muffins.png"
+    review: false
+
+- model: menu.image
+  pk: 5
+  fields:
+    name: "Brown Macadamia"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Brown Macadamia.png"
+    review: false
+
+- model: menu.image
+  pk: 6
+  fields:
+    name: "Brownie Cheesecake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Brownie Cheesecake.png"
+    review: false
+
+- model: menu.image
+  pk: 7
+  fields:
+    name: "Butter Croissant"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Butter Croissant.png"
+    review: false
+
+- model: menu.image
+  pk: 8
+  fields:
+    name: "Butterfly Pea Tea with Lemon and Powder"
+    price: "50"
+    category: "tea"
+    image: "menu_images/Butterfly Pea Tea with Lemon and Powder.png"
+    review: false
+
+- model: menu.image
+  pk: 9
+  fields:
+    name: "Caramel Milk Macchiato"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Caramel Milk Macchiato.png"
+    review: false
+
+- model: menu.image
+  pk: 10
+  fields:
+    name: "Chocolate Chip Cookies"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Chocolate Chip Cookies.png"
+    review: false
+
+- model: menu.image
+  pk: 11
+  fields:
+    name: "Chocolate Lava Croissant"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Chocolate Lava Croissant.png"
+    review: false
+
+- model: menu.image
+  pk: 12
+  fields:
+    name: "Chocolate Lava Muffins"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Chocolate Lava Muffins.png"
+    review: false
+
+- model: menu.image
+  pk: 13
+  fields:
+    name: "Coconut Latte"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Coconut Latte.png"
+    review: false
+
+- model: menu.image
+  pk: 14
+  fields:
+    name: "Coffee Matcha Fusion"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Coffee Matcha Fusion.png"
+    review: false
+
+- model: menu.image
+  pk: 15
+  fields:
+    name: "Crispy Waffles with Berry Sauce"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Crispy waffles with berry sauce.png"
+    review: false
+
+- model: menu.image
+  pk: 16
+  fields:
+    name: "Dandelion Apple Caramel"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Dandelion Apple Caramel.png"
+    review: false
+
+- model: menu.image
+  pk: 17
+  fields:
+    name: "Dark Cocoa Iced"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Dark Cocoa Iced.png"
+    review: false
+
+- model: menu.image
+  pk: 18
+  fields:
+    name: "DertCoffee"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/DertCoffee.png"
+    review: false
+
+- model: menu.image
+  pk: 19
+  fields:
+    name: "Fresh Coconut Cake with Fresh Cream"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Fresh coconut cake with fresh cream.png"
+    review: false
+
+- model: menu.image
+  pk: 20
+  fields:
+    name: "Fresh Milk Oreo Blended"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Fresh milk Oreo blended.png"
+    review: false
+
+- model: menu.image
+  pk: 21
+  fields:
+    name: "Fresh Milk with Butterfly Pea Powder"
+    price: "50"
+    category: "tea"
+    image: "menu_images/Fresh milk with butterfly pea powder.png"
+    review: false
+
+
+- model: menu.image
+  pk: 22
+  fields:
+    name: "Green Tea Matcha"
+    price: "50"
+    category: "tea"
+    image: "menu_images/Green tea matcha.png"
+    review: false
+
+- model: menu.image
+  pk: 23
+  fields:
+    name: "Honey Toast with Ice Cream"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Honey toast with ice cream.png"
+    review: false
+
+- model: menu.image
+  pk: 24
+  fields:
+    name: "Hong Kong Egg Tart"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Hong Kong Egg Tart.png"
+    review: false
+
+- model: menu.image
+  pk: 25
+  fields:
+    name: "Iced Americano"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Iced Americano.png"
+    review: false
+
+- model: menu.image
+  pk: 26
+  fields:
+    name: "Iced Coconut Coffee"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Iced coconut coffee.png"
+    review: false
+
+- model: menu.image
+  pk: 27
+  fields:
+    name: "Iced Latte"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/Iced Latte.png"
+    review: false
+
+- model: menu.image
+  pk: 28
+  fields:
+    name: "Lemon Meringue Tart"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Lemon Meringue Tart.png"
+    review: false
+
+- model: menu.image
+  pk: 29
+  fields:
+    name: "Lemon Yogurt Cake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Lemon Yogurt Cake.png"
+    review: false
+
+- model: menu.image
+  pk: 30
+  fields:
+    name: "Macarons"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Macarons.png"
+    review: false
+
+- model: menu.image
+  pk: 31
+  fields:
+    name: "Magic Ice Lemon Tea"
+    price: "50"
+    category: "tea"
+    image: "menu_images/Magic Ice Lemon Tea.png"
+    review: false
+
+- model: menu.image
+  pk: 32
+  fields:
+    name: "Mandarin Orange Cake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Mandarin Orange Cake.png"
+    review: false
+
+- model: menu.image
+  pk: 33
+  fields:
+    name: "Mango Cheesecake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Mango Cheesecake.png"
+    review: false
+
+- model: menu.image
+  pk: 34
+  fields:
+    name: "Orange Espresso"
+    price: "50"
+    category: "coffee"
+    image: "menu_images/OrangeEspresso.png"
+    review: false
+
+- model: menu.image
+  pk: 35
+  fields:
+    name: "Pandan Coconut Cake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Pandan Coconut Cake.png"
+    review: false
+
+- model: menu.image
+  pk: 36
+  fields:
+    name: "Passion Fruit Cheesecake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Passion Fruit Cheesecake.png"
+    review: false
+
+- model: menu.image
+  pk: 37
+  fields:
+    name: "Red Velvet Cake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Red Velvet Cake.png"
+    review: false
+
+- model: menu.image
+  pk: 38
+  fields:
+    name: "Strawberry Jam Scones"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Strawberry Jam Scones.png"
+    review: false
+
+- model: menu.image
+  pk: 39
+  fields:
+    name: "Taro Cream Cake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Taro Cream Cake.png"
+    review: false
+
+- model: menu.image
+  pk: 40
+  fields:
+    name: "Thai Tea with Pearls"
+    price: "50"
+    category: "tea"
+    image: "menu_images/Thai Tea with Pearls.png"
+    review: false
+
+- model: menu.image
+  pk: 41
+  fields:
+    name: "Yogurt Blueberry Cake"
+    price: "50"
+    category: "dessert"
+    image: "menu_images/Yogurt Blueberry Cake.png"
+    review: false
