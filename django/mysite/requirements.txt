@@ -1,0 +1,17 @@
+#pip install -r requirements.txt
+
+PyYAML
+django
+streamlit
+django-widget-tweaks
+requests
+djangorestframework
+plotly
+
+#python mange.py createsuperuser 
+#python manage.py loaddata data.yaml
+
+#cd mysite ( #python manage.py runserver)
+
+#cd mysite / cd streamlitapp / cd templates 
+#streamlit run streamlit.py
