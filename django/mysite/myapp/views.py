@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.db.models import Count, Avg, Q
 
-from .models import Menu, Promotion, Order, Member
+from .models import Menu, Promotion, Order, Member, Review
 
 # สร้าง SignUpView ที่เมื่อสมัครสมาชิกแล้วจะสร้าง Member instance ด้วย
 class SignUpView(CreateView):
@@ -53,8 +53,28 @@ def register(req):
     return render(req, 'register.html')
 
 @login_required
-def review(req):
-    return render(req, 'review.html')
+def review(request, menu_id):
+    menu = get_object_or_404(Menu, id=menu_id)
+    reviews = menu.reviews.all()
+    avg_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
+
+    if request.method == "POST":
+        rating = int(request.POST.get("rating"))
+        comment = request.POST.get("comment", "")
+
+        Review.objects.create(
+            menu=menu,
+            rating=rating,
+            comment=comment
+        )
+        return redirect('review', menu_id=menu.id)
+
+    context = {
+        'menu': menu,
+        'reviews': reviews,
+        'avg_rating': avg_rating,
+    }
+    return render(request, 'review.html', context)
 
 def buy(request, menu_id):
     menu_item = get_object_or_404(Menu, pk=menu_id)

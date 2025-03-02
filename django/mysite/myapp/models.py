@@ -40,7 +40,7 @@ class Menu(models.Model):
 
 # Model สำหรับให้สมาชิกรีวิวเมนู
 class Review(models.Model):
-    member = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='reviews')
+    
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='reviews')
     rating = models.PositiveSmallIntegerField(default=5)  # คะแนนเต็ม 1-5 ดาว
     comment = models.TextField(blank=True)
