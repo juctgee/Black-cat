@@ -16,7 +16,6 @@
             </div>
             <!-- Right Column: รายละเอียดสินค้า -->
             <div class="col-md-7">
-                <!-- เพิ่ม action ให้กับ form เพื่อส่งไปยัง process_order -->
                 <form id="order-form" method="post" action="{% url 'process_order' menu.id %}">
                     {% csrf_token %}
                     <h3 style="color: black;">{{ menu.name }}</h3>
@@ -45,7 +44,7 @@
                                 <div id="promo-options" class="mb-3">
                                     {% for promo in menu.promotions.all %}
                                     <div class="promo-item mb-2" style="border:1px solid #ccc; padding: 8px;">
-                                        <input type="radio" name="selected_promo" value="{{ promo.discount_percentage }}"
+                                        <input type="radio" name="selected_promo" value="{{ promo.discount_percentage }} "
                                             id="promo_{{ promo.pk }}">
                                         <label for="promo_{{ promo.pk }}" style="color: black; font-weight: bold;">
                                             {{ promo.title }} - ลด {{ promo.discount_percentage }}%
@@ -75,31 +74,11 @@
                         {% endif %}
                     </div>
 
-                    <!-- ปุ่มยืนยันการสั่งซื้อ (เปิด Modal) -->
-                    <button type="button" class="btn btn-dark square-btn mt-3" data-bs-toggle="modal"
-                        data-bs-target="#confirmModal">
+                    <!-- ปุ่มยืนยันการสั่งซื้อ -->
+                    <button type="submit" class="btn btn-dark square-btn mt-3">
                         ยืนยันการสั่งซื้อ
                     </button>
                 </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal ยืนยันการสั่งซื้อ -->
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="border-radius: 0;">
-            <div class="modal-header" style="border: none;">
-                <h5 class="modal-title" id="confirmModalLabel" style="color: black;">ยืนยันการสั่งซื้อ</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="color: black;">
-                คุณต้องการสั่งซื้อสินค้าชิ้นนี้หรือไม่?
-            </div>
-            <div class="modal-footer" style="border: none;">
-                <button type="button" class="btn btn-secondary square-btn" data-bs-dismiss="modal">ยกเลิก</button>
-                <button type="button" id="confirm-order-btn" class="btn btn-dark square-btn">สั่งซื้อ</button>
             </div>
         </div>
     </div>
@@ -202,14 +181,6 @@
                 });
             });
         }
-
-        // สำหรับ modal ยืนยันการสั่งซื้อ
-        const confirmOrderBtn = document.getElementById('confirm-order-btn');
-        const orderForm = document.getElementById('order-form');
-        confirmOrderBtn.addEventListener('click', function () {
-            // ส่งฟอร์มไปยัง process_order view (ตาม action ของ form)
-            orderForm.submit();
-        });
     });
 </script>
 {% endblock %}

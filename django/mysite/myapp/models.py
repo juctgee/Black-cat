@@ -15,8 +15,11 @@ class Member(models.Model):
     def __str__(self):
         return self.username
 
-
 # Model สำหรับเมนูอาหารและเครื่องดื่ม
+class MenuManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
+
 class Menu(models.Model):
     CATEGORY_CHOICES = [
         ('coffee', 'เมนูกาแฟ'),
@@ -28,15 +31,18 @@ class Menu(models.Model):
     
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    # หากต้องการคำนวณราคาควรใช้ DecimalField แต่หากยังใช้ CharField ให้แปลงก่อนคำนวณ
     price = models.CharField(max_length=100)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     image = models.ImageField(upload_to='menu_images/')
     review = models.BooleanField(default=False)
+    
+    objects = MenuManager()
+
+    def natural_key(self):
+        return (self.name,)
 
     def __str__(self):
         return self.name
-
 
 # Model สำหรับให้สมาชิกรีวิวเมนู
 class Review(models.Model):
@@ -104,7 +110,11 @@ class Order(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='orders')
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='orders')
     quantity = models.PositiveIntegerField(default=1)
+    
+    # เก็บวันที่สั่งซื้อ
     order_date = models.DateTimeField(auto_now_add=True)
+
+    # เก็บราคารวม
     total_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     def save(self, *args, **kwargs):
@@ -116,6 +126,5 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        # แปลงเวลาเป็นเวลาท้องถิ่น (Asia/Bangkok ตาม settings)
         local_time = timezone.localtime(self.order_date)
         return f"Order #{self.id} by {self.member.username} on {local_time.strftime('%d %b %Y, %I:%M %p')}"

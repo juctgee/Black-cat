@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 import plotly.express as px
 import datetime
+import calendar
 
 # กำหนด Page Config
 st.set_page_config(
@@ -27,7 +28,7 @@ st.markdown(
         margin: 10px 0px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
-        height: 150px;  /* กำหนดความสูงของการ์ด */
+        height: 150px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -73,171 +74,175 @@ def fetch_data(endpoint):
         st.error(f"Error fetching data from {endpoint}: {e}")
         return None
 
-# Sidebar สำหรับเลือกหน้าที่ต้องการแสดง
-st.sidebar.title("Navigation")
-page = st.sidebar.selectbox("เลือกหน้า", ["Dashboard", "Menu", "Member"])
+# หน้า Dashboard (แสดงทุกอย่างในหน้าเดียว)
+st.title("KANGMOR CAFE DASHBOARD")
 
-if page == "Dashboard":
-    st.title("KANGMOR CAFE DASHBOARD")
+# === KPI Cards (4 คอลัมน์) ===
+col1, col2, col3, col4 = st.columns(4)
 
-    # === KPI Cards (4 คอลัมน์) ===
-    col1, col2, col3, col4 = st.columns(4)
-
-    # Total Sales
-    with col1:
-        total_sales_data = fetch_data("total_sales/")
-        if total_sales_data:
-            total_sales_value = total_sales_data.get("total_sales", 0)
-            st.markdown(
-                f"""
-                <div class="kpi-card">
-                  <div class="kpi-title">Total Sales</div>
-                  <div class="kpi-number">{total_sales_value:,.2f}</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-    # Upcoming Events
-    with col2:
-        upcoming_events_data = fetch_data("upcoming_events/")
-        if upcoming_events_data:
-            num_events = len(upcoming_events_data)
-            st.markdown(
-                f"""
-                <div class="kpi-card">
-                  <div class="kpi-title">Upcoming Events</div>
-                  <div class="kpi-number">{num_events:,}</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-    # New Members
-    with col3:
-        new_members_data = fetch_data("new_members/")
-        if new_members_data:
-            new_members_value = new_members_data.get("new_members_past_7_days", 0)
-            st.markdown(
-                f"""
-                <div class="kpi-card">
-                  <div class="kpi-title">New Members</div>
-                  <div class="kpi-number">{new_members_value:,}</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-    # Orders Today (ใช้ API order_by_date/)
-    with col4:
-        today = datetime.date.today().strftime("%Y-%m-%d")
-        orders_today_data = fetch_data(f"order_by_date/?start_date={today}&end_date={today}")
-        orders_today_count = len(orders_today_data) if orders_today_data is not None else 0
+# ยอดขายรวม (Total Sales)
+with col1:
+    total_sales_data = fetch_data("total_sales/")
+    if total_sales_data:
+        total_sales_value = total_sales_data.get("total_sales", 0)
         st.markdown(
             f"""
             <div class="kpi-card">
-              <div class="kpi-title">Orders Today</div>
-              <div class="kpi-number">{orders_today_count:,}</div>
+              <div class="kpi-title">ยอดขายรวม</div>
+              <div class="kpi-number">{total_sales_value:,.2f}</div>
             </div>
             """,
             unsafe_allow_html=True
         )
 
-    # === กราฟในหน้า Dashboard ===
+# ช่อง col2 (เว้นว่างไว้หรือเพิ่ม KPI อื่นๆ ถ้ามี)
 
-    # Monthly Sales Chart
-    st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.subheader("Monthly Sales")
-    monthly_sales_data = fetch_data("monthly_sales/")
-    if monthly_sales_data:
-        df_monthly_sales = pd.DataFrame(monthly_sales_data)
-        months = df_monthly_sales["month"].unique().tolist()
-        selected_month = st.selectbox("เลือกเดือน", months)
-        filtered_df = df_monthly_sales[df_monthly_sales["month"] == selected_month]
-        fig = px.bar(filtered_df, x="month", y="sales", title=f"Monthly Sales: {selected_month}",
-                     height=400)
-        st.plotly_chart(fig, use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+with col3:
+    new_members_data = fetch_data("new_members/")
+    if new_members_data:
+        new_members_value = new_members_data.get("new_members_past_7_days", 0)
+        st.markdown(
+            f"""
+            <div class="kpi-card">
+              <div class="kpi-title">สมาชิกใหม่</div>
+              <div class="kpi-number">{new_members_value:,}</div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-    # Best Selling Menus (Horizontal Bar Chart)
-    st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.subheader("Best Selling Menus (Horizontal)")
-    best_selling_data = fetch_data("best_selling_menus/")
-    if best_selling_data:
-        df_best = pd.DataFrame(best_selling_data)
-        fig_best = px.bar(df_best, x="num_reviews", y="name", orientation='h',
-                          title="Best Selling Menus (by Reviews)",
-                          labels={"name": "Menu Name", "num_reviews": "Number of Reviews"},
-                          height=400)
+with col4:
+    today = datetime.date.today().strftime("%Y-%m-%d")
+    orders_today_data = fetch_data(f"order_by_date/?start_date={today}&end_date={today}")
+    orders_today_count = len(orders_today_data) if orders_today_data is not None else 0
+    st.markdown(
+        f"""
+        <div class="kpi-card">
+          <div class="kpi-title">คำสั่งซื้อวันนี้</div>
+          <div class="kpi-number">{orders_today_count:,}</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# ============================
+# กราฟแนวโน้มการขายรายวัน (Daily Sales Trend)
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
+st.subheader("แนวโน้มการขายรายวัน")
+trend_filter = st.selectbox("เลือกวิธีดูแนวโน้ม", ["ดูทั้งหมด", "เลือกวัน", "เลือกเดือน"], key="trend_filter")
+
+if trend_filter == "ดูทั้งหมด":
+    trend_start_date = datetime.date.today() - datetime.timedelta(days=30)
+    trend_end_date = datetime.date.today()
+elif trend_filter == "เลือกวัน":
+    trend_day = st.date_input("เลือกวัน", value=datetime.date.today(), key="trend_day_select")
+    trend_start_date = trend_day
+    trend_end_date = trend_day
+elif trend_filter == "เลือกเดือน":
+    orders_all = fetch_data("order_list/")
+    if orders_all:
+        df_all = pd.DataFrame(orders_all)
+        df_all['order_date'] = pd.to_datetime(df_all['order_date'], errors='coerce')
+        df_all['month'] = df_all['order_date'].dt.strftime("%Y-%m")
+        months_available = sorted(df_all['month'].dropna().unique().tolist())
+        selected_month_trend = st.selectbox("เลือกเดือน", months_available, key="trend_month_select")
+        year, month = map(int, selected_month_trend.split("-"))
+        trend_start_date = datetime.date(year, month, 1)
+        last_day = calendar.monthrange(year, month)[1]
+        trend_end_date = datetime.date(year, month, last_day)
+    else:
+        trend_start_date = datetime.date.today() - datetime.timedelta(days=30)
+        trend_end_date = datetime.date.today()
+else:
+    trend_start_date = datetime.date.today() - datetime.timedelta(days=30)
+    trend_end_date = datetime.date.today()
+
+trend_start_str = trend_start_date.strftime("%Y-%m-%d")
+trend_end_str = trend_end_date.strftime("%Y-%m-%d")
+orders_by_date_data = fetch_data(f"order_by_date/?start_date={trend_start_str}&end_date={trend_end_str}")
+if orders_by_date_data:
+    df_orders_trend = pd.DataFrame(orders_by_date_data)
+    if not df_orders_trend.empty:
+        df_orders_trend['order_date'] = pd.to_datetime(df_orders_trend['order_date'], errors='coerce')
+        daily_sales = df_orders_trend.groupby(df_orders_trend['order_date'].dt.date)['total_price'].sum().reset_index(name='sales')
+        daily_sales.columns = ['order_date', 'sales']
+        fig_daily = px.line(daily_sales, x="order_date", y="sales",
+                            title="แนวโน้มการขายรายวัน", height=400)
+        st.plotly_chart(fig_daily, use_container_width=True)
+    else:
+        st.info("ไม่มีข้อมูลการขายในช่วงที่เลือก")
+else:
+    st.info("ไม่พบข้อมูลการขาย")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# ============================
+# กราฟเมนูขายดี (Best Selling Menus by Sales) แบบ Bar Chart
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
+st.subheader("เมนูขายดี (ดูจากยอดขาย)")
+orders_data = fetch_data("order_list/")
+if orders_data:
+    df_orders = pd.DataFrame(orders_data)
+    df_orders['total_price'] = pd.to_numeric(df_orders['total_price'], errors='coerce')
+    df_orders['order_date'] = pd.to_datetime(df_orders['order_date'], errors='coerce')
+    # ใช้ข้อมูลทั้งหมดโดยไม่ต้องกรองเพิ่มเติม
+    df_filtered = df_orders.copy()
+    if not df_filtered.empty:
+        best_selling = df_filtered.groupby("menu__name")["total_price"].sum().reset_index()
+        best_selling = best_selling.sort_values(by="total_price", ascending=False)
+        category_order = best_selling["menu__name"].tolist()
+        fig_best = px.bar(
+            best_selling, 
+            x="total_price", 
+            y="menu__name", 
+            orientation='h',
+            category_orders={"menu__name": category_order},
+            title="เมนูขายดี (ตามยอดขาย)", 
+            labels={"menu__name": "ชื่อเมนู", "total_price": "ยอดขาย (บาท)"},
+            height=400
+        )
         st.plotly_chart(fig_best, use_container_width=True)
     else:
-        st.info("ไม่พบข้อมูล Best Selling Menus")
-    st.markdown('</div>', unsafe_allow_html=True)
+        st.info("ไม่มีข้อมูลคำสั่งซื้อ")
+else:
+    st.info("ไม่พบข้อมูลคำสั่งซื้อ")
+st.markdown('</div>', unsafe_allow_html=True)
 
-    # Daily Orders Trend Graph
-    st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.subheader("Daily Orders Trend")
-    orders_by_date_data = fetch_data("orders_by_date/")
-    if orders_by_date_data:
-        df_orders = pd.DataFrame(orders_by_date_data)
-        if not df_orders.empty:
-            df_orders['date'] = pd.to_datetime(df_orders['date'], errors='coerce')
-            fig_orders = px.line(df_orders, x="date", y="orders",
-                                 title="Daily Orders Trend", height=400)
-            st.plotly_chart(fig_orders, use_container_width=True)
-        else:
-            st.info("ไม่มีข้อมูลคำสั่งซื้อในแต่ละวัน")
-    st.markdown('</div>', unsafe_allow_html=True)
+# ============================
+# กราฟยอดขายรายเดือน (Monthly Sales) แสดงทั้งหมด
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
+st.subheader("ยอดขายรายเดือน (ทั้งหมด)")
+monthly_sales_data = fetch_data("monthly_sales/")
+if monthly_sales_data:
+    df_monthly_sales = pd.DataFrame(monthly_sales_data)
+    fig_monthly = px.bar(df_monthly_sales, x="month", y="sales", title="ยอดขายรายเดือนทั้งหมด", height=400)
+    st.plotly_chart(fig_monthly, use_container_width=True)
+else:
+    st.info("ไม่พบข้อมูลยอดขายรายเดือน")
+st.markdown('</div>', unsafe_allow_html=True)
 
-    # Upcoming Events (รายละเอียด)
-    st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.subheader("Upcoming Events")
-    if upcoming_events_data:
-        df_events = pd.DataFrame(upcoming_events_data)
-        st.dataframe(df_events.style.set_properties(**{'border': '1px solid #ddd'}))
-    st.markdown('</div>', unsafe_allow_html=True)
+# ============================
+# กราฟใหม่ที่ 1: ยอดขายตามวันในสัปดาห์ (Sales by Weekday)
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
+st.subheader("ยอดขายตามวันในสัปดาห์")
+if orders_data:
+    df_orders = pd.DataFrame(orders_data)
+    df_orders['order_date'] = pd.to_datetime(df_orders['order_date'], errors='coerce')
+    # เพิ่มคอลัมน์ weekday โดยใช้ชื่อวันภาษาไทย
+    weekday_mapping = {0: 'จันทร์', 1: 'อังคาร', 2: 'พุธ', 3: 'พฤหัสบดี', 4: 'ศุกร์', 5: 'เสาร์', 6: 'อาทิตย์'}
+    df_orders['weekday'] = df_orders['order_date'].dt.dayofweek.map(weekday_mapping)
+    weekday_sales = df_orders.groupby("weekday")["total_price"].sum().reset_index()
+    # เพื่อให้แสดงตามลำดับที่ถูกต้อง
+    weekday_order = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์', 'อาทิตย์']
+    weekday_sales['weekday'] = pd.Categorical(weekday_sales['weekday'], categories=weekday_order, ordered=True)
+    weekday_sales = weekday_sales.sort_values("weekday")
+    fig_weekday = px.bar(weekday_sales, x="weekday", y="total_price",
+                         title="ยอดขายตามวันในสัปดาห์",
+                         labels={"weekday": "วัน", "total_price": "ยอดขาย (บาท)"},
+                         height=400)
+    st.plotly_chart(fig_weekday, use_container_width=True)
+else:
+    st.info("ไม่พบข้อมูลคำสั่งซื้อ")
+st.markdown('</div>', unsafe_allow_html=True)
 
-elif page == "Menu":
-    st.title("Menu List")
-    st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    menu_list_data = fetch_data("menu_list/")
-    if menu_list_data:
-        df_menu = pd.DataFrame(menu_list_data)
-        st.dataframe(df_menu.style.set_properties(**{'border': '1px solid #ddd'}))
-        # Pie Chart for Menu Category Distribution
-        if not df_menu.empty and 'category' in df_menu.columns:
-            category_count = df_menu['category'].value_counts().reset_index()
-            category_count.columns = ['category', 'count']
-            fig_pie = px.pie(category_count, values='count', names='category', 
-                             title="Menu Category Distribution")
-            st.plotly_chart(fig_pie, use_container_width=True)
-    else:
-        st.info("ไม่พบข้อมูลเมนู")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-elif page == "Member":
-    st.title("Member List")
-    st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    member_list_data = fetch_data("member_list/")
-    if member_list_data:
-        df_member = pd.DataFrame(member_list_data)
-        st.dataframe(df_member.style.set_properties(**{'border': '1px solid #ddd'}))
-        # Bar Chart for Member Registrations by Month
-        if not df_member.empty and 'created_at' in df_member.columns:
-            try:
-                df_member['created_at'] = pd.to_datetime(df_member['created_at'], errors='coerce')
-                df_member['month'] = df_member['created_at'].dt.strftime("%B %Y")
-                monthly_registrations = df_member.groupby('month').size().reset_index(name='count')
-                if not monthly_registrations.empty:
-                    fig_reg = px.bar(monthly_registrations, x='month', y='count', 
-                                     title="Member Registrations by Month", height=400)
-                    st.plotly_chart(fig_reg, use_container_width=True)
-                else:
-                    st.info("ไม่มีข้อมูลการสมัครสมาชิกแบ่งตามเดือน")
-            except Exception as e:
-                st.error(f"Error processing dates: {e}")
-        else:
-            st.info("คอลัมน์ created_at ไม่พบในข้อมูล")
-    else:
-        st.info("ไม่พบข้อมูลสมาชิก")
-    st.markdown('</div>', unsafe_allow_html=True)
+# ============================
+# กราฟใหม่ที่ 2: จำนวนคำสั่งซื้อตามเมนู (Order Count by Menu)

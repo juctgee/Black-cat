@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>แดชบอร์ดแอดมิน</h1>
+  
+  <!-- แถบเมนู (Nav Tabs) -->
+  <ul class="nav nav-tabs" id="adminTab" role="tablist">
+    <!-- แท็บ Dashboard -->
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">แดชบอร์ด</button>
+    </li>
+    <!-- แท็บ รายการเมนู -->
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="menu-tab" data-bs-toggle="tab" data-bs-target="#menu" type="button" role="tab" aria-controls="menu" aria-selected="false">รายการเมนู</button>
+    </li>
+    <!-- แท็บ โปรโมชั่น -->
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="promotion-tab" data-bs-toggle="tab" data-bs-target="#promotion" type="button" role="tab" aria-controls="promotion" aria-selected="false">โปรโมชั่น</button>
+    </li>
+    <!-- แท็บ รายชื่อสมาชิก -->
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="member-tab" data-bs-toggle="tab" data-bs-target="#member" type="button" role="tab" aria-controls="member" aria-selected="false">รายชื่อสมาชิก</button>
+    </li>
+  </ul>
+  
+  <!-- เนื้อหาของแท็บ -->
+  <div class="tab-content" id="adminTabContent">
+    <!-- แท็บแดชบอร์ด (Streamlit) -->
+    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+      <div class="mt-4">
+        <h2>แดชบอร์ด (Streamlit)</h2>
+        <!-- ใช้ iframe เพื่อฝังหน้า Streamlit Dashboard -->
+        <div class="ratio ratio-16x9">
+          <iframe src="http://127.0.0.1:8501" title="Streamlit Dashboard" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    
+    <!-- แท็บรายการเมนู -->
+    <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+      <div class="mt-4">
+        <h2>รายการเมนู</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ชื่อเมนู</th>
+              <th>ราคา</th>
+              <th>หมวดหมู่</th>
+              <th>ดำเนินการ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for menu in menus %}
+            <tr>
+              <td>{{ menu.name }}</td>
+              <td>{{ menu.price }}</td>
+              <td>{{ menu.category }}</td>
+              <td>
+                <a href="{% url 'admin_edit_menu' menu.id %}" class="btn btn-sm btn-primary">แก้ไข</a>
+                <a href="{% url 'admin_delete_menu' menu.id %}" class="btn btn-sm btn-danger" onclick="return confirm('คุณแน่ใจหรือไม่ที่จะลบเมนูนี้?');">ลบ</a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="4">ไม่พบเมนูในระบบ</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- แท็บโปรโมชั่น -->
+    <div class="tab-pane fade" id="promotion" role="tabpanel" aria-labelledby="promotion-tab">
+      <div class="mt-4">
+        <h2>โปรโมชั่น</h2>
+        <div class="mb-3">
+          <a href="{% url 'admin_add_promotion' %}" class="btn btn-success">เพิ่มโปรโมชั่นใหม่</a>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ชื่อโปรโมชั่น</th>
+              <th>รายละเอียด</th>
+              <th>ส่วนลด (%)</th>
+              <th>วันที่เริ่ม</th>
+              <th>วันที่สิ้นสุด</th>
+              <th>การใช้งาน</th>
+              <th>เมนูที่ใช้ได้</th>
+              <th>ดำเนินการ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for promo in promotions %}
+            <tr>
+              <td>{{ promo.title }}</td>
+              <td>{{ promo.description }}</td>
+              <td>{{ promo.discount_percentage }}</td>
+              <td>{{ promo.start_date }}</td>
+              <td>{{ promo.end_date }}</td>
+              <td>
+                {% if promo.usage_limit == 0 %}
+                  ไม่จำกัด
+                {% else %}
+                  {{ promo.usage_limit }} ครั้ง
+                {% endif %}
+              </td>
+              <td>
+                {% if promo.applicable_menus.all %}
+                  {% for m in promo.applicable_menus.all %}
+                    {{ m.name }}{% if not forloop.last %}, {% endif %}
+                  {% endfor %}
+                {% else %}
+                  ทั้งร้าน
+                {% endif %}
+              </td>
+              <td>
+                <a href="{% url 'admin_edit_promotion' promo.id %}" class="btn btn-sm btn-primary">แก้ไข</a>
+                <a href="{% url 'admin_delete_promotion' promo.id %}" class="btn btn-sm btn-danger" onclick="return confirm('คุณแน่ใจหรือไม่ที่จะลบโปรโมชั่นนี้?');">ลบ</a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="8">ไม่พบโปรโมชั่นในระบบ</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- แท็บรายชื่อสมาชิก -->
+    <div class="tab-pane fade" id="member" role="tabpanel" aria-labelledby="member-tab">
+      <div class="mt-4">
+        <h2>รายชื่อสมาชิก</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ชื่อผู้ใช้</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for member in members %}
+            <tr>
+              <td>{{ member.username }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="1">ไม่พบสมาชิกในระบบ</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

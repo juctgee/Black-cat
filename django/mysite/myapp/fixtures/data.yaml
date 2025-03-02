@@ -1,13 +1,245 @@
-# Fixture สำหรับ model Member (20 รายการ)
+# Fixture สำหรับ model myapp.member (30 รายการ)
 - model: myapp.member
   pk: 1
   fields:
     username: member1
-    password: password1
+    password: "pbkdf2_sha256$260000$Ocw9Q1cGfZc0mGnPsn0GJa$0zALB/b5ghIkS2kH2cPlE2Tq94NRo2PhM6eHXRlrDvs="
     points: 10
-    created_at: "2025-01-01T00:00:00Z"
+    created_at: "2025-02-20T00:00:00Z"
 
-# Fixture สำหรับ model Menu (41 รายการ)
+- model: myapp.member
+  pk: 2
+  fields:
+    username: member2
+    password: "pbkdf2_sha256$260000$RcxGmK5dlwQdu71XLfESMX$EVyFZ7VSmOC9EA/xGDE09vJ1VX9+CY6zZcQmTPa3ZL8="
+    points: 5
+    created_at: "2025-02-20T03:00:00Z"
+
+- model: myapp.member
+  pk: 3
+  fields:
+    username: member3
+    password: "pbkdf2_sha256$260000$5yXKgaN16jIEq9S6Y1sxw3$P3op2IXzZWHmhlk46S/9Gufamst8wIF1p8AGQ4ZXOf0="
+    points: 8
+    created_at: "2025-02-21T10:00:00Z"
+
+- model: myapp.member
+  pk: 4
+  fields:
+    username: member4
+    password: "pbkdf2_sha256$260000$ZhvHKHtZixvTzsmGuWyGGK$TTh3QuO8/3RMKkMs1izXPF4bTzYapYCV9TZiHk7R2kA="
+    points: 12
+    created_at: "2025-02-22T15:30:00Z"
+
+- model: myapp.member
+  pk: 5
+  fields:
+    username: member5
+    password: "pbkdf2_sha256$260000$7g0bUL1CKMdMnwKts6blNw$NZP9ITM5I5uU+Gug68r/WZ0hTgD8juLJ+J8Eur7bJe8="
+    points: 0
+    created_at: "2025-02-23T09:15:00Z"
+
+- model: myapp.member
+  pk: 6
+  fields:
+    username: member6
+    password: "pbkdf2_sha256$260000$KIKETRMww8rJPrYbOVDXm2$QbKezUwFsSMKwC8iwGvR5BfH6D9KXMYgnkPFsF14U1w="
+    points: 7
+    created_at: "2025-02-24T14:45:00Z"
+
+- model: myapp.member
+  pk: 7
+  fields:
+    username: member7
+    password: "pbkdf2_sha256$260000$64qAY9rUHOP+M35gR4XKVG$Mm4ckMkp8SUKxKx4x0kAic8q16b2R62Nq1+VnTt+DhU="
+    points: 15
+    created_at: "2025-02-25T19:00:00Z"
+
+- model: myapp.member
+  pk: 8
+  fields:
+    username: member8
+    password: "pbkdf2_sha256$260000$gBNVpmzQ1M1EjUVEhTTy+S$z5uYCL7UC7QqEUX+1lxc5PHwTC6oIZcSt9Em6b2TTTE="
+    points: 3
+    created_at: "2025-02-27T08:20:00Z"
+
+- model: myapp.member
+  pk: 9
+  fields:
+    username: member9
+    password: "pbkdf2_sha256$260000$JlKuFh54zZeIbb/sG3Kf4Z$k2RbdeNq08HpssMiZ7n6BVAlSTy3BLtN78Crv7MCmZE="
+    points: 2
+    created_at: "2025-02-28T12:00:00Z"
+
+- model: myapp.member
+  pk: 10
+  fields:
+    username: member10
+    password: "pbkdf2_sha256$260000$KZPh1HWx7DkPLKic2sjpEG$W4xgZIQ08sS4Z3NZUJJB+ci3hqnBOZwv9Cb3nHRh6bM="
+    points: 9
+    created_at: "2025-03-02T03:18:00Z"
+
+- model: myapp.member
+  pk: 11
+  fields:
+    username: member11
+    password: "pbkdf2_sha256$260000$dummySalt11$dummyHash11"
+    points: 4
+    created_at: "2025-02-20T05:23:00Z"
+
+- model: myapp.member
+  pk: 12
+  fields:
+    username: member12
+    password: "pbkdf2_sha256$260000$dummySalt12$dummyHash12"
+    points: 8
+    created_at: "2025-02-21T12:34:00Z"
+
+- model: myapp.member
+  pk: 13
+  fields:
+    username: member13
+    password: "pbkdf2_sha256$260000$dummySalt13$dummyHash13"
+    points: 3
+    created_at: "2025-02-22T08:15:00Z"
+
+- model: myapp.member
+  pk: 14
+  fields:
+    username: member14
+    password: "pbkdf2_sha256$260000$dummySalt14$dummyHash14"
+    points: 7
+    created_at: "2025-02-23T17:45:00Z"
+
+- model: myapp.member
+  pk: 15
+  fields:
+    username: member15
+    password: "pbkdf2_sha256$260000$dummySalt15$dummyHash15"
+    points: 10
+    created_at: "2025-02-24T10:30:00Z"
+
+- model: myapp.member
+  pk: 16
+  fields:
+    username: member16
+    password: "pbkdf2_sha256$260000$dummySalt16$dummyHash16"
+    points: 5
+    created_at: "2025-02-25T23:10:00Z"
+
+- model: myapp.member
+  pk: 17
+  fields:
+    username: member17
+    password: "pbkdf2_sha256$260000$dummySalt17$dummyHash17"
+    points: 12
+    created_at: "2025-02-26T06:50:00Z"
+
+- model: myapp.member
+  pk: 18
+  fields:
+    username: member18
+    password: "pbkdf2_sha256$260000$dummySalt18$dummyHash18"
+    points: 6
+    created_at: "2025-02-27T14:05:00Z"
+
+- model: myapp.member
+  pk: 19
+  fields:
+    username: member19
+    password: "pbkdf2_sha256$260000$dummySalt19$dummyHash19"
+    points: 9
+    created_at: "2025-02-28T09:20:00Z"
+
+- model: myapp.member
+  pk: 20
+  fields:
+    username: member20
+    password: "pbkdf2_sha256$260000$dummySalt20$dummyHash20"
+    points: 0
+    created_at: "2025-03-01T16:40:00Z"
+
+- model: myapp.member
+  pk: 21
+  fields:
+    username: member21
+    password: "pbkdf2_sha256$260000$dummySalt21$dummyHash21"
+    points: 14
+    created_at: "2025-03-02T00:10:00Z"
+
+- model: myapp.member
+  pk: 22
+  fields:
+    username: member22
+    password: "pbkdf2_sha256$260000$dummySalt22$dummyHash22"
+    points: 1
+    created_at: "2025-02-20T22:55:00Z"
+
+- model: myapp.member
+  pk: 23
+  fields:
+    username: member23
+    password: "pbkdf2_sha256$260000$dummySalt23$dummyHash23"
+    points: 15
+    created_at: "2025-02-21T03:30:00Z"
+
+- model: myapp.member
+  pk: 24
+  fields:
+    username: member24
+    password: "pbkdf2_sha256$260000$dummySalt24$dummyHash24"
+    points: 7
+    created_at: "2025-02-22T19:40:00Z"
+
+- model: myapp.member
+  pk: 25
+  fields:
+    username: member25
+    password: "pbkdf2_sha256$260000$dummySalt25$dummyHash25"
+    points: 8
+    created_at: "2025-02-23T11:15:00Z"
+
+- model: myapp.member
+  pk: 26
+  fields:
+    username: member26
+    password: "pbkdf2_sha256$260000$dummySalt26$dummyHash26"
+    points: 4
+    created_at: "2025-02-24T20:05:00Z"
+
+- model: myapp.member
+  pk: 27
+  fields:
+    username: member27
+    password: "pbkdf2_sha256$260000$dummySalt27$dummyHash27"
+    points: 6
+    created_at: "2025-02-25T07:35:00Z"
+
+- model: myapp.member
+  pk: 28
+  fields:
+    username: member28
+    password: "pbkdf2_sha256$260000$dummySalt28$dummyHash28"
+    points: 2
+    created_at: "2025-02-26T13:50:00Z"
+
+- model: myapp.member
+  pk: 29
+  fields:
+    username: member29
+    password: "pbkdf2_sha256$260000$dummySalt29$dummyHash29"
+    points: 11
+    created_at: "2025-02-27T18:25:00Z"
+
+- model: myapp.member
+  pk: 30
+  fields:
+    username: member30
+    password: "pbkdf2_sha256$260000$dummySalt30$dummyHash30"
+    points: 13
+    created_at: "2025-03-01T02:00:00Z"
+
+# Fixture สำหรับ model myapp.menu (41 รายการ)
 - model: myapp.menu
   pk: 1
   fields:
@@ -376,3 +608,548 @@
     category: "dessert"
     image: "menu_images/Yogurt Blueberry Cake.png"
     review: false
+
+# Fixture สำหรับ model myapp.order (30 รายการ)
+# ใน fixture นี้ ช่องฟิลด์ menu จะใช้ natural key (ชื่อเมนู) แทน id
+# Fixture สำหรับ model myapp.order (30 รายการ)
+# ข้อมูล order_date ถูกปรับให้สั่งซื้อมีช่วงตั้งแต่ 2025-01-05 ถึง 2025-03-02
+- model: myapp.order
+  pk: 1
+  fields:
+    member: 1
+    menu: ["Almond Croissants"]
+    quantity: 2
+    total_price: "90.00"
+    order_date: "2025-01-05T10:00:00Z"
+
+- model: myapp.order
+  pk: 2
+  fields:
+    member: 2
+    menu: ["Apple Pie"]
+    quantity: 1
+    total_price: "50.00"
+    order_date: "2025-01-10T14:30:00Z"
+
+- model: myapp.order
+  pk: 3
+  fields:
+    member: 3
+    menu: ["Basque Cheesecake"]
+    quantity: 3
+    total_price: "165.00"
+    order_date: "2025-01-15T09:00:00Z"
+
+- model: myapp.order
+  pk: 4
+  fields:
+    member: 4
+    menu: ["Blueberry Muffins"]
+    quantity: 2
+    total_price: "80.00"
+    order_date: "2025-01-20T11:15:00Z"
+
+- model: myapp.order
+  pk: 5
+  fields:
+    member: 5
+    menu: ["Brown Macadamia"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-01-25T13:45:00Z"
+
+- model: myapp.order
+  pk: 6
+  fields:
+    member: 6
+    menu: ["Brownie Cheesecake"]
+    quantity: 2
+    total_price: "100.00"
+    order_date: "2025-01-28T16:20:00Z"
+
+- model: myapp.order
+  pk: 7
+  fields:
+    member: 7
+    menu: ["Butter Croissant"]
+    quantity: 1
+    total_price: "55.00"
+    order_date: "2025-01-30T08:30:00Z"
+
+- model: myapp.order
+  pk: 8
+  fields:
+    member: 8
+    menu: ["Butterfly Pea Tea with Lemon and Powder"]
+    quantity: 3
+    total_price: "180.00"
+    order_date: "2025-01-31T12:00:00Z"
+
+- model: myapp.order
+  pk: 9
+  fields:
+    member: 9
+    menu: ["Caramel Milk Macchiato"]
+    quantity: 2
+    total_price: "80.00"
+    order_date: "2025-02-02T10:05:00Z"
+
+- model: myapp.order
+  pk: 10
+  fields:
+    member: 10
+    menu: ["Chocolate Chip Cookies"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-02-04T12:45:00Z"
+
+- model: myapp.order
+  pk: 11
+  fields:
+    member: 11
+    menu: ["Chocolate Lava Croissant"]
+    quantity: 2
+    total_price: "100.00"
+    order_date: "2025-02-06T09:00:00Z"
+
+- model: myapp.order
+  pk: 12
+  fields:
+    member: 12
+    menu: ["Chocolate Lava Muffins"]
+    quantity: 3
+    total_price: "165.00"
+    order_date: "2025-02-08T15:30:00Z"
+
+- model: myapp.order
+  pk: 13
+  fields:
+    member: 13
+    menu: ["Coconut Latte"]
+    quantity: 1
+    total_price: "60.00"
+    order_date: "2025-02-10T11:20:00Z"
+
+- model: myapp.order
+  pk: 14
+  fields:
+    member: 14
+    menu: ["Coffee Matcha Fusion"]
+    quantity: 2
+    total_price: "80.00"
+    order_date: "2025-02-12T17:00:00Z"
+
+- model: myapp.order
+  pk: 15
+  fields:
+    member: 15
+    menu: ["Crispy Waffles with Berry Sauce"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-02-14T08:50:00Z"
+
+- model: myapp.order
+  pk: 16
+  fields:
+    member: 16
+    menu: ["Dandelion Apple Caramel"]
+    quantity: 3
+    total_price: "150.00"
+    order_date: "2025-02-16T14:30:00Z"
+
+- model: myapp.order
+  pk: 17
+  fields:
+    member: 17
+    menu: ["Dark Cocoa Iced"]
+    quantity: 2
+    total_price: "110.00"
+    order_date: "2025-02-18T10:40:00Z"
+
+- model: myapp.order
+  pk: 18
+  fields:
+    member: 18
+    menu: ["Dert Coffee"]
+    quantity: 1
+    total_price: "60.00"
+    order_date: "2025-02-20T12:00:00Z"
+
+- model: myapp.order
+  pk: 19
+  fields:
+    member: 19
+    menu: ["Fresh Coconut Cake with Fresh Cream"]
+    quantity: 3
+    total_price: "120.00"
+    order_date: "2025-02-22T09:15:00Z"
+
+- model: myapp.order
+  pk: 20
+  fields:
+    member: 20
+    menu: ["Fresh Milk Oreo Blended"]
+    quantity: 2
+    total_price: "90.00"
+    order_date: "2025-02-24T16:45:00Z"
+
+- model: myapp.order
+  pk: 21
+  fields:
+    member: 21
+    menu: ["Fresh Milk with Butterfly Pea Powder"]
+    quantity: 1
+    total_price: "50.00"
+    order_date: "2025-02-26T11:55:00Z"
+
+- model: myapp.order
+  pk: 22
+  fields:
+    member: 22
+    menu: ["Green Tea Matcha"]
+    quantity: 2
+    total_price: "110.00"
+    order_date: "2025-02-27T13:20:00Z"
+
+- model: myapp.order
+  pk: 23
+  fields:
+    member: 23
+    menu: ["Honey Toast with Ice Cream"]
+    quantity: 3
+    total_price: "180.00"
+    order_date: "2025-02-28T09:40:00Z"
+
+- model: myapp.order
+  pk: 24
+  fields:
+    member: 24
+    menu: ["Hong Kong Egg Tart"]
+    quantity: 1
+    total_price: "40.00"
+    order_date: "2025-03-01T14:05:00Z"
+
+- model: myapp.order
+  pk: 25
+  fields:
+    member: 25
+    menu: ["Iced Americano"]
+    quantity: 2
+    total_price: "90.00"
+    order_date: "2025-03-01T18:25:00Z"
+
+- model: myapp.order
+  pk: 26
+  fields:
+    member: 26
+    menu: ["Iced Coconut Coffee"]
+    quantity: 1
+    total_price: "50.00"
+    order_date: "2025-03-01T20:15:00Z"
+
+- model: myapp.order
+  pk: 27
+  fields:
+    member: 27
+    menu: ["Iced Latte"]
+    quantity: 2
+    total_price: "110.00"
+    order_date: "2025-03-02T08:30:00Z"
+
+- model: myapp.order
+  pk: 28
+  fields:
+    member: 28
+    menu: ["Lemon Meringue Tart"]
+    quantity: 3
+    total_price: "180.00"
+    order_date: "2025-03-02T11:45:00Z"
+
+- model: myapp.order
+  pk: 29
+  fields:
+    member: 29
+    menu: ["Lemon Yogurt Cake"]
+    quantity: 1
+    total_price: "40.00"
+    order_date: "2025-03-02T14:10:00Z"
+
+- model: myapp.order
+  pk: 30
+  fields:
+    member: 30
+    menu: ["Macarons"]
+    quantity: 2
+    total_price: "90.00"
+    order_date: "2025-03-02T16:00:00Z"
+
+# Fixture สำหรับ model myapp.order (เพิ่มอีก 30 รายการ จาก pk: 31 ถึง 60)
+- model: myapp.order
+  pk: 31
+  fields:
+    member: 1
+    menu: ["Macarons"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-02-10T10:00:00Z"
+
+- model: myapp.order
+  pk: 32
+  fields:
+    member: 2
+    menu: ["Apple Pie"]
+    quantity: 2
+    total_price: "100.00"
+    order_date: "2025-02-10T10:00:00Z"
+
+- model: myapp.order
+  pk: 33
+  fields:
+    member: 3
+    menu: ["Basque Cheesecake"]
+    quantity: 1
+    total_price: "55.00"
+    order_date: "2025-02-10T10:00:00Z"
+
+- model: myapp.order
+  pk: 34
+  fields:
+    member: 4
+    menu: ["Blueberry Muffins"]
+    quantity: 2
+    total_price: "80.00"
+    order_date: "2025-02-15T12:00:00Z"
+
+- model: myapp.order
+  pk: 35
+  fields:
+    member: 5
+    menu: ["Brown Macadamia"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-02-15T12:00:00Z"
+
+- model: myapp.order
+  pk: 36
+  fields:
+    member: 6
+    menu: ["Brownie Cheesecake"]
+    quantity: 3
+    total_price: "150.00"
+    order_date: "2025-02-15T12:00:00Z"
+
+- model: myapp.order
+  pk: 37
+  fields:
+    member: 7
+    menu: ["Butter Croissant"]
+    quantity: 2
+    total_price: "110.00"
+    order_date: "2025-02-20T09:30:00Z"
+
+- model: myapp.order
+  pk: 38
+  fields:
+    member: 8
+    menu: ["Butterfly Pea Tea with Lemon and Powder"]
+    quantity: 1
+    total_price: "60.00"
+    order_date: "2025-02-20T09:30:00Z"
+
+- model: myapp.order
+  pk: 39
+  fields:
+    member: 9
+    menu: ["Caramel Milk Macchiato"]
+    quantity: 2
+    total_price: "80.00"
+    order_date: "2025-02-20T09:30:00Z"
+
+- model: myapp.order
+  pk: 40
+  fields:
+    member: 10
+    menu: ["Chocolate Chip Cookies"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-02-22T14:00:00Z"
+
+- model: myapp.order
+  pk: 41
+  fields:
+    member: 11
+    menu: ["Chocolate Lava Croissant"]
+    quantity: 2
+    total_price: "100.00"
+    order_date: "2025-02-22T14:00:00Z"
+
+- model: myapp.order
+  pk: 42
+  fields:
+    member: 12
+    menu: ["Chocolate Lava Muffins"]
+    quantity: 1
+    total_price: "55.00"
+    order_date: "2025-02-22T14:00:00Z"
+
+- model: myapp.order
+  pk: 43
+  fields:
+    member: 13
+    menu: ["Coconut Latte"]
+    quantity: 3
+    total_price: "180.00"
+    order_date: "2025-02-25T11:00:00Z"
+
+- model: myapp.order
+  pk: 44
+  fields:
+    member: 14
+    menu: ["Coffee Matcha Fusion"]
+    quantity: 1
+    total_price: "40.00"
+    order_date: "2025-02-25T11:00:00Z"
+
+- model: myapp.order
+  pk: 45
+  fields:
+    member: 15
+    menu: ["Crispy Waffles with Berry Sauce"]
+    quantity: 2
+    total_price: "90.00"
+    order_date: "2025-02-25T11:00:00Z"
+
+- model: myapp.order
+  pk: 46
+  fields:
+    member: 16
+    menu: ["Dandelion Apple Caramel"]
+    quantity: 1
+    total_price: "50.00"
+    order_date: "2025-02-27T08:00:00Z"
+
+- model: myapp.order
+  pk: 47
+  fields:
+    member: 17
+    menu: ["Dark Cocoa Iced"]
+    quantity: 2
+    total_price: "110.00"
+    order_date: "2025-02-27T08:00:00Z"
+
+- model: myapp.order
+  pk: 48
+  fields:
+    member: 18
+    menu: ["Dert Coffee"]
+    quantity: 3
+    total_price: "180.00"
+    order_date: "2025-02-27T08:00:00Z"
+
+- model: myapp.order
+  pk: 49
+  fields:
+    member: 19
+    menu: ["Fresh Coconut Cake with Fresh Cream"]
+    quantity: 1
+    total_price: "40.00"
+    order_date: "2025-02-28T15:00:00Z"
+
+- model: myapp.order
+  pk: 50
+  fields:
+    member: 20
+    menu: ["Fresh Milk Oreo Blended"]
+    quantity: 2
+    total_price: "90.00"
+    order_date: "2025-02-28T15:00:00Z"
+
+- model: myapp.order
+  pk: 51
+  fields:
+    member: 21
+    menu: ["Fresh Milk with Butterfly Pea Powder"]
+    quantity: 1
+    total_price: "50.00"
+    order_date: "2025-02-28T15:00:00Z"
+
+- model: myapp.order
+  pk: 52
+  fields:
+    member: 22
+    menu: ["Green Tea Matcha"]
+    quantity: 3
+    total_price: "165.00"
+    order_date: "2025-03-01T09:00:00Z"
+
+- model: myapp.order
+  pk: 53
+  fields:
+    member: 23
+    menu: ["Honey Toast with Ice Cream"]
+    quantity: 1
+    total_price: "60.00"
+    order_date: "2025-03-01T09:00:00Z"
+
+- model: myapp.order
+  pk: 54
+  fields:
+    member: 24
+    menu: ["Hong Kong Egg Tart"]
+    quantity: 2
+    total_price: "80.00"
+    order_date: "2025-03-01T09:00:00Z"
+
+- model: myapp.order
+  pk: 55
+  fields:
+    member: 25
+    menu: ["Iced Americano"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-03-01T12:30:00Z"
+
+- model: myapp.order
+  pk: 56
+  fields:
+    member: 26
+    menu: ["Iced Coconut Coffee"]
+    quantity: 2
+    total_price: "100.00"
+    order_date: "2025-03-01T12:30:00Z"
+
+- model: myapp.order
+  pk: 57
+  fields:
+    member: 27
+    menu: ["Iced Latte"]
+    quantity: 3
+    total_price: "165.00"
+    order_date: "2025-03-01T12:30:00Z"
+
+- model: myapp.order
+  pk: 58
+  fields:
+    member: 28
+    menu: ["Lemon Meringue Tart"]
+    quantity: 1
+    total_price: "60.00"
+    order_date: "2025-03-02T08:15:00Z"
+
+- model: myapp.order
+  pk: 59
+  fields:
+    member: 29
+    menu: ["Lemon Yogurt Cake"]
+    quantity: 2
+    total_price: "80.00"
+    order_date: "2025-03-02T08:15:00Z"
+
+- model: myapp.order
+  pk: 60
+  fields:
+    member: 30
+    menu: ["Macarons"]
+    quantity: 1
+    total_price: "45.00"
+    order_date: "2025-03-02T08:15:00Z"

@@ -1,11 +1,12 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from rest_framework.decorators import api_view # type: ignore
+from rest_framework.response import Response # type: ignore
 from django.db.models import Sum
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models.functions import TruncMonth
-from myapp.models import Order
+from myapp.models import Order, Promotion
 from django.db.models import Count
+from datetime import datetime
 
 
 from myapp.models import Menu, Order, Member, Event
@@ -96,3 +97,41 @@ def best_selling_menus(request):
     # สร้าง list ของ dictionary โดยเลือก field ที่ต้องการแสดง
     data = list(best_selling.values('id', 'name', 'price', 'category', 'image', 'num_reviews'))
     return Response(data)
+
+@api_view(['GET'])
+def promotion_list(request):
+    """
+    ดึงรายการโปรโมชั่นทั้งหมด
+    """
+    promotions = Promotion.objects.all().values()
+    return Response(list(promotions))
+
+@api_view(['POST'])
+def add_promotion(request):
+    """
+    เพิ่มโปรโมชั่นใหม่
+    """
+    data = request.data
+    try:
+        promo = Promotion.objects.create(
+            title=data.get("title"),
+            description=data.get("description"),
+            discount=data.get("discount"),
+            start_date=datetime.strptime(data.get("start_date"), "%Y-%m-%d").date(),
+            end_date=datetime.strptime(data.get("end_date"), "%Y-%m-%d").date()
+        )
+        return Response({"id": promo.id, "message": "Promotion created successfully"})
+    except Exception as e:
+        return Response({"error": str(e)}, status=400)
+
+@api_view(['DELETE'])
+def delete_promotion(request, promo_id):
+    """
+    ลบโปรโมชั่นตาม id
+    """
+    try:
+        promo = Promotion.objects.get(id=promo_id)
+        promo.delete()
+        return Response({"message": "Promotion deleted successfully"})
+    except Promotion.DoesNotExist:
+        return Response({"error": "Promotion not found"}, status=404)

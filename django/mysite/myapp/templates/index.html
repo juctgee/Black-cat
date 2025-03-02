@@ -1,49 +1,72 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-  <!-- เมนูแนะนำ -->
-  <div class="mt-5">
-    <h2 class="mb-4 text-center">เมนูแนะนำ</h2>
-    <div class="row">
-      {% for menu in recommended_menus %}
-      <div class="col-md-4 mb-4">
-        <div class="card modern-card">
-          {% if menu.image %}
-            <img src="{{ menu.image.url }}" class="card-img-top" alt="{{ menu.name }}">
-          {% else %}
-            <img src="https://via.placeholder.com/400x300.png?text=ไม่มีรูป" class="card-img-top" alt="ไม่มีรูป">
-          {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{ menu.name }}</h5>
-            <p class="card-text">ราคา: {{ menu.price }}</p>
-            <!-- แสดงรีวิวเป็นดาว -->
-            <div class="star-rating mb-2">
-              {% with avg=menu.avg_rating|default:0 %}
-                {% for i in "12345" %}
-                  {% if forloop.counter <= avg|floatformat:0 %}
-                    <i class="bi bi-star-fill text-warning"></i>
-                  {% else %}
-                    <i class="bi bi-star text-warning"></i>
-                  {% endif %}
-                {% endfor %}
-                {% if avg > 0 %}
-                  <span>({{ avg|floatformat:1 }})</span>
-                {% else %}
-                  <span>(ไม่มีรีวิว)</span>
-                {% endif %}
-              {% endwith %}
-            </div>
-            <a href="#" class="btn btn-primary">สั่งซื้อ</a>
-          </div>
-        </div>
-      </div>
-      {% empty %}
-      <div class="col-12">
-        <p class="text-center">ไม่มีเมนูแนะนำในขณะนี้</p>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+<!-- Image Carousel -->
+<img src="../../media/menu_images//bg.jpg" class="img-fluid" alt="...">
+<div class="container mt-5">
 </div>
 {% endblock %}
+
+<style>
+  /* Carousel Styling */
+  .carousel-inner img {
+    width: 100%;
+    height: 500px;
+    /* Fixed height for carousel images */
+    object-fit: cover;
+    /* Maintain aspect ratio */
+  }
+
+  /* Fixed size for product images in the cards (ถ้ามีการใช้งานในหน้าอื่น) */
+  .fixed-img {
+    width: 100%;
+    height: 250px;
+    /* Same height for all images in the card */
+    object-fit: cover;
+    /* Maintain aspect ratio */
+  }
+
+  /* Card Styling (ถ้ามีการใช้งานในหน้าอื่น) */
+  .modern-card {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Card text styling (ถ้ามีการใช้งานในหน้าอื่น) */
+  .card-title,
+  .card-text {
+    color: #333;
+  }
+
+  /* Star Rating Styling (ถ้ามีการใช้งานในหน้าอื่น) */
+  .star-rating i {
+    font-size: 1.2rem;
+    color: #f7d155;
+  }
+
+  .star-rating span {
+    font-weight: bold;
+  }
+
+  /* Square Button Styling (ถ้ามีการใช้งานในหน้าอื่น) */
+  .square-btn {
+    border-radius: 0 !important;
+    padding: 10px;
+    text-transform: uppercase;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 5px;
+  }
+
+  .btn-group .btn {
+    flex: 1;
+  }
+</style>

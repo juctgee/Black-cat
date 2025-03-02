@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>ยืนยันการลบโปรโมชั่น</h1>
+  <p>คุณต้องการลบโปรโมชั่น <strong>{{ promo.title }}</strong> ใช่หรือไม่?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">ลบโปรโมชั่น</button>
+    <a href="{% url 'custom_admin' %}" class="btn btn-secondary">ยกเลิก</a>
+  </form>
+</div>
+{% endblock %}

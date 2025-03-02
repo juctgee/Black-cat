@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h2 class="mt-5 text-center" style="color: black;">รีวิว: {{ menu.name }}</h2>
+  
+  <div class="text-center mb-4">
+    <img src="{{ menu.image.url }}" alt="{{ menu.name }}" width="200" class="rounded">
+  </div>
+
+  <h3 class="text-center">
+    คะแนนเฉลี่ย:
+    {% for i in "12345"|make_list %}
+        {% if i|add:0 <= avg_rating %}
+            ⭐
+        {% else %}
+            ☆
+        {% endif %}
+    {% endfor %}
+    ({{ avg_rating|floatformat:1 }})
+  </h3>
+
+  <!-- ฟอร์มให้คะแนน -->
+  <div class="text-center">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="rating" class="d-block">ให้คะแนน:</label>
+        <div class="star-rating">
+          <input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐
+          <input type="radio" name="rating" value="4"> ⭐⭐⭐⭐
+          <input type="radio" name="rating" value="3"> ⭐⭐⭐
+          <input type="radio" name="rating" value="2"> ⭐⭐
+          <input type="radio" name="rating" value="1"> ⭐
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">แสดงความคิดเห็น:</label>
+        <textarea name="comment" class="form-control" rows="4" placeholder="เขียนความคิดเห็นของคุณที่นี่"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-outline-dark square-btn mt-3">ส่งรีวิว</button>
+    </form>
+  </div>
+
+  <!-- แสดงรีวิวทั้งหมด -->
+  <h3 class="text-center mt-5">รีวิวทั้งหมด</h3>
+  <div class="reviews-list">
+    {% for review in reviews %}
+      <div class="review-item mb-3">
+        <p class="star-rating">
+          {% for i in "12345"|make_list %}
+            {% if i|add:0 <= review.rating %}
+              ⭐
+            {% else %}
+              ☆
+            {% endif %}
+          {% endfor %}
+        </p>
+        <p>{{ review.comment }}</p>
+      </div>
+    {% empty %}
+      <p class="text-center">ยังไม่มีรีวิว</p>
+    {% endfor %}
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="{% url 'menu' %}" class="btn btn-outline-dark square-btn">กลับไปที่เมนู</a>
+  </div>
+</div>
+
+<style>
+  /* กำหนดให้พื้นหลังของ body เป็นสีเทาอ่อน */
+  body {
+    background-color: #F5F5F5;
+  }
+
+  /* ปรับสีตัวอักษรให้เป็นสีดำ */
+  .card-title,
+  .card-text,
+  .rating-text {
+    color: black;
+  }
+
+  /* ปรับการจัดวางเนื้อหาในการ์ดให้เท่ากัน */
+  .card-body {
+    padding: 15px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* ปรับปุ่มให้มีขอบเป็นสี่เหลี่ยม */
+  .square-btn {
+    border-radius: 0 !important;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* เปลี่ยนสีปุ่มเมื่อ hover */
+  .square-btn:hover {
+    background-color: black;
+    color: white;
+    border-color: black;
+  }
+
+  /* จัดกลุ่มปุ่มให้แสดงผลในแนวเดียวกัน */
+  .reviews-list {
+    padding: 0 10px;
+  }
+
+  .review-item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ปรับการจัดการกับรูปภาพ */
+  img.rounded {
+    border-radius: 10px;
+  }
+
+  /* ปรับปุ่มกลับไปที่เมนู */
+  .btn-outline-dark {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ปรับพื้นที่ของฟอร์มให้ดูดี */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  /* ทำให้ฟอร์มให้คะแนนอยู่ในแนวเดียวกัน */
+  .star-rating input {
+    margin-right: 5px;
+  }
+</style>
+
+{% endblock %}

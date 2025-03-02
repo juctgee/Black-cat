@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>ยืนยันการลบเมนู</h1>
+    <p>คุณต้องการลบเมนู <strong>{{ menu.name }}</strong> หรือไม่?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">ลบเมนู</button>
+        <a href="{% url 'custom_admin' %}" class="btn btn-secondary">ยกเลิก</a>
+    </form>
+</div>
+{% endblock %}
